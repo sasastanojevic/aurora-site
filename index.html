@@ -14,7 +14,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aurora — Win clients. Keep clients.">
   <meta name="twitter:description" content="AI intelligence tools for agencies. Content that wins new business. Intelligence that keeps existing clients.">
-  <!-- Self-hosted fonts — no third-party requests (GDPR/DSGVO compliant) -->
   <link rel="stylesheet" href="fonts/fonts.css">
   <style>
     :root {
@@ -38,7 +37,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); line-height: 1.7; font-weight: 400; overflow-x: hidden; }
 
-    /* Nav */
+    /* ── Nav ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(6, 9, 15, 0.82); border-bottom: 1px solid rgba(76, 201, 240, 0.08); }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
     .nav-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
@@ -49,83 +48,101 @@
     .nav-cta:hover { opacity: 0.88; }
     nav::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--aurora-gradient-h); opacity: 0.5; }
 
-    /* Hero */
+    /* ── Hero ── */
     .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(ellipse, rgba(76, 201, 240, 0.06) 0%, rgba(179, 136, 235, 0.04) 40%, transparent 70%); pointer-events: none; }
+    .hero::before { content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 1000px; height: 1000px; background: radial-gradient(ellipse, rgba(76, 201, 240, 0.07) 0%, rgba(179, 136, 235, 0.05) 35%, transparent 65%); pointer-events: none; animation: hero-glow 8s ease-in-out infinite alternate; }
+    @keyframes hero-glow { 0% { opacity: 0.7; transform: translateX(-50%) scale(1); } 100% { opacity: 1; transform: translateX(-50%) scale(1.1); } }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to top, var(--bg-deep), transparent); pointer-events: none; }
     .hero-content { position: relative; z-index: 1; max-width: 820px; }
-    .hero-waves { width: 80px; height: auto; margin: 0 auto 2rem; opacity: 0.9; }
     .hero-eyebrow { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-primary); margin-bottom: 1.5rem; }
-    .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.8rem, 6vw, 4.2rem); line-height: 1.12; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
+    .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
     .hero h1 .gradient-text { background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p.hero-sub-head { font-size: 1.2rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 1rem; font-weight: 300; }
-    .hero p.hero-proof { font-size: 0.95rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 2.5rem; font-weight: 300; opacity: 0.7; }
+    .hero p.hero-sub-head { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7; }
     .hero-form { display: flex; gap: 0.75rem; max-width: 460px; margin: 0 auto; }
     .hero-form input[type="email"] { flex: 1; padding: 0.85rem 1.2rem; background: var(--bg-surface); border: 1px solid rgba(76, 201, 240, 0.15); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.25s; }
     .hero-form input[type="email"]:focus { border-color: var(--accent-primary); }
     .hero-form input[type="email"]::placeholder { color: var(--text-muted); opacity: 0.6; }
-    .hero-form button { padding: 0.85rem 1.6rem; background: var(--aurora-gradient); color: var(--bg-deep); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: opacity 0.25s; white-space: nowrap; }
-    .hero-form button:hover { opacity: 0.88; }
+    .hero-form button { padding: 0.85rem 1.8rem; background: var(--aurora-gradient); color: var(--bg-deep); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: opacity 0.25s, transform 0.2s; white-space: nowrap; }
+    .hero-form button:hover { opacity: 0.88; transform: translateY(-1px); }
     .success-msg { display: none; color: var(--accent-tertiary); font-weight: 600; margin-top: 1rem; }
     .success-msg.show { display: block; }
     .hero-fine { margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); opacity: 0.5; }
 
-    /* Section shared */
-    section { padding: 6rem 2rem; }
+    /* ── Section shared ── */
+    section { padding: 7rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-primary); margin-bottom: 1rem; }
     .section-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
     .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 640px; font-weight: 300; margin-bottom: 3.5rem; }
     .section-desc-center { text-align: center; margin-left: auto; margin-right: auto; }
 
-    /* Problem */
-    #problem { background: var(--bg-polar); }
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .problem-card { padding: 2.5rem; background: var(--bg-twilight); border-radius: 14px; border: 1px solid rgba(76, 201, 240, 0.06); }
-    .problem-card .problem-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .problem-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin-bottom: 0.8rem; }
-    .problem-card p { color: var(--text-muted); font-size: 0.92rem; font-weight: 300; line-height: 1.7; }
-    .problem-card .problem-stat { display: block; font-size: 2rem; font-weight: 800; margin: 1rem 0 0.5rem; }
+    /* ── Impact Numbers ── */
+    .impact-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; padding: 4rem 2rem 0; position: relative; z-index: 1; }
+    .impact-item { text-align: center; }
+    .impact-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; margin-bottom: 0.5rem; }
+    .impact-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
 
-    /* Products */
+    /* ── Day 1 Value ── */
+    #day1 { background: var(--bg-polar); }
+    .day1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .day1-card { position: relative; background: var(--bg-twilight); border-radius: 16px; padding: 2.5rem; border: 1px solid rgba(76, 201, 240, 0.06); overflow: hidden; }
+    .day1-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .day1-card.reforge::before { background: var(--reforge-accent); }
+    .day1-card.clientpulse::before { background: var(--clientpulse-accent); }
+    .day1-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.25rem 0.7rem; border-radius: 4px; margin-bottom: 1.2rem; }
+    .day1-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; }
+    .day1-steps { list-style: none; counter-reset: step; }
+    .day1-steps li { counter-increment: step; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; font-size: 0.92rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+    .day1-steps li::before { content: counter(step); flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+    .day1-card.reforge .day1-steps li::before { background: rgba(240,200,76,0.15); color: var(--reforge-accent); }
+    .day1-card.clientpulse .day1-steps li::before { background: rgba(56,232,200,0.15); color: var(--clientpulse-accent); }
+    .day1-result { margin-top: 1.5rem; padding: 1.2rem 1.5rem; border-radius: 10px; font-size: 0.92rem; font-weight: 500; line-height: 1.6; }
+    .day1-card.reforge .day1-result { background: rgba(240,200,76,0.06); border-left: 3px solid var(--reforge-accent); color: var(--reforge-accent); }
+    .day1-card.clientpulse .day1-result { background: rgba(56,232,200,0.06); border-left: 3px solid var(--clientpulse-accent); color: var(--clientpulse-accent); }
+
+    /* ── Products ── */
     #products { background: var(--bg-deep); }
     .product-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 1rem; }
     .product-card { background: var(--bg-polar); border: 1px solid rgba(76, 201, 240, 0.06); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s; }
     .product-card:hover { border-color: var(--card-accent); }
     .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); }
-    .product-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .product-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
     .product-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .product-name { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; }
-    .product-tagline { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; }
-    .product-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .product-moat { background: rgba(76, 201, 240, 0.04); border-radius: 10px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid var(--card-accent); }
-    .product-moat-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
-    .product-moat p { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; line-height: 1.65; }
-    .product-layers { margin-bottom: 1.5rem; }
-    .product-layers .layer { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 0.8rem; }
-    .layer-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; }
-    .layer-content { flex: 1; }
-    .layer-content strong { font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 0.15rem; }
-    .layer-content span { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
-    .product-features { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-    .product-features li { font-size: 0.75rem; padding: 0.3rem 0.7rem; background: rgba(76, 201, 240, 0.06); border-radius: 20px; color: var(--text-muted); font-weight: 300; }
-    .product-status { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600; }
+    .product-name { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; }
+    .product-tagline { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.7; }
+    .product-roi { padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center; }
+    .product-roi .roi-number { font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1.2; margin-bottom: 0.3rem; }
+    .product-roi .roi-context { font-size: 0.85rem; font-weight: 300; line-height: 1.5; }
+    .product-features-compact { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; margin-bottom: 1.5rem; }
+    .product-features-compact li { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; padding-left: 1.2rem; position: relative; }
+    .product-features-compact li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--card-accent, var(--accent-primary)); opacity: 0.6; }
+    .product-status { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; }
     .status-dot { width: 7px; height: 7px; border-radius: 50%; animation: pulse-dot 2s infinite; }
     @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
     .product-link { display: inline-block; margin-left: 1.2rem; font-size: 0.85rem; text-decoration: none; font-weight: 600; transition: opacity 0.25s; }
     .product-link:hover { opacity: 0.75; }
 
-    /* Coherence banner */
-    .coherence { margin-top: 3rem; background: var(--bg-polar); border-radius: 14px; padding: 2.5rem; border: 1px solid rgba(76, 201, 240, 0.06); text-align: center; }
-    .coherence h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; margin-bottom: 0.8rem; }
-    .coherence p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; max-width: 640px; margin: 0 auto; line-height: 1.7; }
-    .coherence-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; margin-top: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    .coherence-item { text-align: center; }
-    .coherence-item .ci-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.3rem; }
-    .coherence-item .ci-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
-    .coherence-item .ci-role { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
-    .coherence-plus { font-size: 1.8rem; font-weight: 300; color: var(--text-muted); opacity: 0.4; }
+    /* ── Coherence ── */
+    .coherence { margin-top: 3rem; background: linear-gradient(135deg, rgba(56,232,200,0.03), rgba(240,200,76,0.03)); border-radius: 16px; padding: 3rem; border: 1px solid rgba(76, 201, 240, 0.08); text-align: center; }
+    .coherence h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.6rem; }
+    .coherence > p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .coherence-visual { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .coherence-item { text-align: center; padding: 1.5rem; border-radius: 12px; }
+    .coherence-item.rf { background: rgba(240,200,76,0.05); }
+    .coherence-item.cp { background: rgba(56,232,200,0.05); }
+    .coherence-item .ci-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .coherence-item .ci-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .coherence-item .ci-role { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .coherence-item .ci-desc { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; }
+    .coherence-arrow { font-size: 1.5rem; color: var(--text-muted); opacity: 0.3; }
 
-    /* Pricing */
+    /* ── Social Proof ── */
+    .social-proof { background: var(--bg-polar); padding: 4rem 2rem; }
+    .proof-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .proof-quote { font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 400; font-style: italic; line-height: 1.6; margin-bottom: 1.5rem; color: var(--text-primary); opacity: 0.9; }
+    .proof-attr { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+    /* ── Pricing ── */
     #pricing { background: var(--bg-polar); }
     .pricing-product { margin-bottom: 3.5rem; }
     .pricing-product-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
@@ -159,22 +176,23 @@
     .bundle-includes { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
     .bundle-includes .bi-item { font-size: 0.85rem; font-weight: 600; }
 
-    /* Story */
+    /* ── Story ── */
     #story { background: var(--bg-deep); }
-    .story-content { max-width: 700px; }
+    .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .story-content p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
     .story-content p strong { color: var(--text-primary); font-weight: 600; }
-    .story-principles { margin-top: 2rem; }
-    .story-principles .sp-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
-    .sp-num { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--accent-primary); opacity: 0.5; line-height: 1.4; flex-shrink: 0; }
-    .sp-text { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; }
-    .sp-text strong { color: var(--text-primary); font-weight: 600; }
+    .story-content .story-quote { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent-primary); font-weight: 400; font-style: italic; line-height: 1.6; margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid rgba(76,201,240,0.3); }
+    .story-principles { }
+    .story-principles .sp-item { padding: 1.5rem; background: var(--bg-polar); border-radius: 12px; margin-bottom: 1rem; border: 1px solid rgba(76, 201, 240, 0.06); }
+    .sp-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+    .sp-item p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; }
 
-    /* Waitlist CTA */
-    #waitlist { background: var(--bg-polar); text-align: center; padding: 5rem 2rem; }
+    /* ── Waitlist CTA ── */
+    #waitlist { background: var(--bg-polar); text-align: center; padding: 6rem 2rem; position: relative; overflow: hidden; }
+    #waitlist::before { content: ''; position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(ellipse, rgba(76, 201, 240, 0.05) 0%, rgba(179, 136, 235, 0.03) 40%, transparent 70%); pointer-events: none; }
     #waitlist .section-desc { margin: 0 auto 2.5rem; }
 
-    /* Footer */
+    /* ── Footer ── */
     footer { position: relative; padding: 3rem 2rem 2rem; text-align: center; background: var(--bg-deep); }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--aurora-gradient-h); opacity: 0.4; }
     .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -183,20 +201,20 @@
     .footer-links a:hover { color: var(--text-primary); }
     .footer-copy { font-size: 0.75rem; color: var(--text-muted); opacity: 0.5; margin-top: 1rem; }
 
-    /* Reveal animation */
+    /* ── Animations ── */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Mobile hamburger */
+    /* Mobile */
     .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
     .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); margin: 5px 0; transition: all 0.3s; }
 
-    /* Responsive */
     @media (max-width: 900px) {
-      .product-showcase { grid-template-columns: 1fr; }
+      .product-showcase, .day1-grid, .story-layout { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-      .coherence-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .coherence-plus { display: none; }
+      .coherence-visual { grid-template-columns: 1fr; gap: 1rem; }
+      .coherence-arrow { display: none; }
+      .impact-strip { grid-template-columns: 1fr; gap: 1.5rem; }
     }
     @media (max-width: 768px) {
       .nav-toggle { display: block; }
@@ -207,6 +225,7 @@
       .pricing-grid { grid-template-columns: 1fr; }
       .footer-links { flex-direction: column; gap: 0.8rem; }
       .bundle-card .bundle-price { font-size: 2.2rem; }
+      .product-features-compact { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -232,58 +251,67 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <svg class="hero-waves" viewBox="0 0 80 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="aurora-g" x1="0" y1="0" x2="80" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#38e8c8"/>
-            <stop offset="25%" stop-color="#4cc9f0"/>
-            <stop offset="50%" stop-color="#7b8ff0"/>
-            <stop offset="75%" stop-color="#b388eb"/>
-            <stop offset="100%" stop-color="#e87fa5"/>
-          </linearGradient>
-        </defs>
-        <path d="M0 8 Q20 0 40 8 Q60 16 80 8" stroke="url(#aurora-g)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <path d="M0 18 Q20 10 40 18 Q60 26 80 18" stroke="url(#aurora-g)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-        <path d="M0 28 Q20 20 40 28 Q60 36 80 28" stroke="url(#aurora-g)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
-      </svg>
-
-      <p class="hero-eyebrow">AI Intelligence Tools for Agencies</p>
+      <p class="hero-eyebrow">AI Intelligence for Agencies</p>
       <h1><span class="gradient-text">Win clients.</span> Keep clients.</h1>
-      <p class="hero-sub-head">Aurora builds focused AI tools that solve the two most expensive problems agencies face: creating content that wins new business, and knowing which clients are about to leave.</p>
-      <p class="hero-proof">Two products. One buyer. The full revenue lifecycle.</p>
+      <p class="hero-sub-head">One podcast becomes 50+ pieces in your client's voice. One Stripe connection predicts which clients are about to leave. Two products. One mission: protect agency revenue.</p>
 
       <form class="hero-form" id="hero-form" onsubmit="submitForm(event, 'hero-success')">
         <input type="email" placeholder="you@agency.com" required>
         <button type="submit">Get Early Access</button>
       </form>
       <div id="hero-success" class="success-msg">You're on the list. We'll be in touch soon.</div>
-      <p class="hero-fine">Free early access. No spam. By signing up you agree to our <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a>.</p>
+      <p class="hero-fine">Free early access &middot; 30% off first year &middot; <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a></p>
     </div>
   </section>
 
-  <!-- PROBLEM -->
-  <section id="problem">
+  <!-- IMPACT NUMBERS -->
+  <div class="impact-strip reveal">
+    <div class="impact-item">
+      <p class="impact-num" style="color: var(--reforge-accent);">$120–300K</p>
+      <p class="impact-label">spent per year by agencies on content reformatting staff</p>
+    </div>
+    <div class="impact-item">
+      <p class="impact-num" style="color: var(--clientpulse-accent);">$60K</p>
+      <p class="impact-label">lost per year when one $5K/mo client churns</p>
+    </div>
+    <div class="impact-item">
+      <p class="impact-num" style="color: var(--accent-primary);">60 days</p>
+      <p class="impact-label">earlier ClientPulse predicts churn vs. gut instinct</p>
+    </div>
+  </div>
+
+  <!-- DAY 1 VALUE -->
+  <section id="day1">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">The Problem</p>
-        <h2 class="section-title">Agencies are losing money on both ends.</h2>
-        <p class="section-desc">Your team juggles dozens of client voices across hundreds of content pieces. Meanwhile, clients slip away silently because nobody caught the warning signs. Sound familiar?</p>
+        <p class="section-label">Value on day one</p>
+        <h2 class="section-title">5 minutes to your first result. Not 5 weeks.</h2>
+        <p class="section-desc">Every AI product promises intelligence "over time." We do too — but you shouldn't have to wait months to see value. Here's what happens in your first five minutes.</p>
       </div>
 
-      <div class="problem-grid">
-        <div class="problem-card reveal">
-          <div class="problem-icon">&#x1F4DD;</div>
-          <h3>Content doesn't sound like "them"</h3>
-          <p>Every client has a voice. Your team tries to match it, but AI tools produce generic output that sounds like ChatGPT, not like the client. Revision cycles eat your margins. Clients notice. Trust erodes.</p>
-          <span class="problem-stat" style="color: var(--reforge-accent);">The fix: ReForge</span>
-          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">AI that actually learns each client's voice through pgvector embeddings trained on their real content. Not templates. Not tone sliders. Real brand voice replication that gets better with every piece.</p>
+      <div class="day1-grid">
+        <div class="day1-card reforge reveal">
+          <span class="day1-badge" style="background: rgba(240,200,76,0.12); color: var(--reforge-accent);">ReForge</span>
+          <h3>Paste one podcast. Get 50+ pieces.</h3>
+          <ol class="day1-steps">
+            <li>Paste your podcast transcript or blog post</li>
+            <li>ReForge extracts 15 content segments automatically</li>
+            <li>Generates 50+ platform-optimized outputs across 19 channels</li>
+            <li>Review in Kanban queue, edit, approve, publish</li>
+          </ol>
+          <div class="day1-result">After 3 months, the Voice Engine knows your client's tone so well that first-draft approval rates hit 80%+.</div>
         </div>
-        <div class="problem-card reveal">
-          <div class="problem-icon">&#x1F4C9;</div>
-          <h3>Clients leave before you see it coming</h3>
-          <p>By the time a client says "we're evaluating options," you've already lost. The warning signs were there for weeks: late payments, shorter meetings, slower email replies. But nobody was watching.</p>
-          <span class="problem-stat" style="color: var(--clientpulse-accent);">The fix: ClientPulse</span>
-          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">AI agents that monitor financial signals, meeting sentiment, and engagement patterns to predict churn 60 days before it happens. One Stripe connection delivers instant value on day one.</p>
+
+        <div class="day1-card clientpulse reveal">
+          <span class="day1-badge" style="background: rgba(56,232,200,0.12); color: var(--clientpulse-accent);">ClientPulse</span>
+          <h3>Connect Stripe. See your portfolio health.</h3>
+          <ol class="day1-steps">
+            <li>One OAuth click connects your Stripe account</li>
+            <li>Instantly see which clients are growing vs. shrinking</li>
+            <li>Payment patterns, revenue concentration risk, expansion signals</li>
+            <li>Monday morning: an email with "3 healthy, 1 at risk, here's what to do"</li>
+          </ol>
+          <div class="day1-result">ClientPulse at $59–199/mo pays for itself the first time it saves one client. One $5K client saved = 5 years of ROI.</div>
         </div>
       </div>
     </div>
@@ -294,8 +322,8 @@
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Our Products</p>
-        <h2 class="section-title">Two tools. One mission.</h2>
-        <p class="section-desc">Each product solves one expensive problem with AI that compounds over time. The longer you use them, the smarter they get. The harder they are to leave.</p>
+        <h2 class="section-title">Not another AI tool. A system that uses AI.</h2>
+        <p class="section-desc">The AI is the engine. The product is the car. You don't need to know how the engine works — you just need it to drive.</p>
       </div>
 
       <div class="product-showcase">
@@ -306,47 +334,22 @@
             <div class="product-icon" style="background: rgba(240,200,76,0.1);">&#x267B;&#xFE0F;</div>
             <div class="product-name">ReForge</div>
           </div>
-          <p class="product-tagline" style="color: var(--reforge-accent);">AI Content Intelligence for Agencies</p>
-          <p class="product-desc">One piece of content becomes 50+ platform-optimized outputs — all in your client's authentic voice. Not just repurposing. Intelligence that knows what to write, how to write it, and where it'll perform best.</p>
+          <p class="product-tagline">One piece of content becomes 50+ platform-optimized outputs — all in your client's authentic voice. Not generic AI output. Content that actually sounds like them.</p>
 
-          <div class="product-moat" style="border-color: var(--reforge-accent);">
-            <p class="product-moat-label" style="color: var(--reforge-accent);">The real moat</p>
-            <p>The <strong style="color: var(--text-primary);">Brand Voice Engine</strong> uses pgvector embeddings trained on actual client content with RAG retrieval, creating outputs that sound like them — not like AI. A recursive learning loop improves with every piece you approve. A consistency checker flags voice drift before the client does.</p>
+          <div class="product-roi" style="background: rgba(240,200,76,0.05);">
+            <p class="roi-number" style="color: var(--reforge-accent);">50+ pieces from 1 input</p>
+            <p class="roi-context" style="color: var(--text-muted);">Across 19 platforms &middot; In your client's voice &middot; Ready to publish</p>
           </div>
 
-          <div class="product-layers">
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">1</div>
-              <div class="layer-content">
-                <strong>Voice Engine</strong>
-                <span>Learns and replicates brand voice. Data compounds over time.</span>
-              </div>
-            </div>
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">2</div>
-              <div class="layer-content">
-                <strong>Content Intelligence</strong>
-                <span>Analyzes which topics and formats perform best per client.</span>
-              </div>
-            </div>
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">3</div>
-              <div class="layer-content">
-                <strong>Ghostwriting Agent</strong>
-                <span>Proactively suggests and drafts content in high-performing areas. The endgame.</span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="product-features">
-            <li>19 Platforms</li>
-            <li>Brand Voice Engine</li>
-            <li>Content Map Analyzer</li>
+          <ul class="product-features-compact">
+            <li style="--dot-color: var(--reforge-accent);">Brand Voice Engine</li>
             <li>Direct Publishing</li>
+            <li>Content Intelligence</li>
+            <li>19 Platform Formats</li>
             <li>Recursive Learning</li>
+            <li>Multi-Client Workspaces</li>
             <li>Voice Consistency Checker</li>
             <li>Batch Processing</li>
-            <li>Multi-Client Workspaces</li>
           </ul>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <div class="product-status" style="color: var(--reforge-accent);"><span class="status-dot" style="background: var(--reforge-accent);"></span> Launching May 19</div>
@@ -360,43 +363,18 @@
             <div class="product-icon" style="background: rgba(56,232,200,0.1);">&#x1F4CA;</div>
             <div class="product-name">ClientPulse</div>
           </div>
-          <p class="product-tagline" style="color: var(--clientpulse-accent);">AI Client Health Intelligence for Agencies</p>
-          <p class="product-desc">Six specialized AI agents monitor your entire client portfolio. Financial signals, meeting sentiment, engagement patterns — fused into a single Health Score that predicts churn 60 days before it happens.</p>
+          <p class="product-tagline">Six AI agents monitor your entire client portfolio. Financial signals, meeting sentiment, engagement patterns — fused into a single Health Score that predicts churn before your clients say a word.</p>
 
-          <div class="product-moat" style="border-color: var(--clientpulse-accent);">
-            <p class="product-moat-label" style="color: var(--clientpulse-accent);">Stripe-first wedge</p>
-            <p>Agencies already have Stripe. <strong style="color: var(--text-primary);">One OAuth click delivers instant value</strong>: which clients are growing vs. shrinking, payment patterns that signal churn, revenue concentration risk, and expansion signals. Financial data is 30% of the Health Score — but it's the 30% agency owners care about most because it's tied directly to cash flow.</p>
+          <div class="product-roi" style="background: rgba(56,232,200,0.05);">
+            <p class="roi-number" style="color: var(--clientpulse-accent);">Predict churn 60 days early</p>
+            <p class="roi-context" style="color: var(--text-muted);">One Stripe click &middot; Monday Brief emails &middot; Automatic save plans</p>
           </div>
 
-          <div class="product-layers">
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">1</div>
-              <div class="layer-content">
-                <strong>Financial Signal Agent</strong>
-                <span>Stripe integration. Revenue trends, payment patterns, concentration risk.</span>
-              </div>
-            </div>
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">2</div>
-              <div class="layer-content">
-                <strong>Meeting Intelligence Agent</strong>
-                <span>Transcribe calls, extract sentiment, detect engagement shifts.</span>
-              </div>
-            </div>
-            <div class="layer">
-              <div class="layer-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">3</div>
-              <div class="layer-content">
-                <strong>Churn Prediction + Action Engine</strong>
-                <span>Predicts which clients are at risk and drafts save plans automatically.</span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="product-features">
+          <ul class="product-features-compact">
             <li>Client Health Score</li>
             <li>Stripe Revenue Sync</li>
-            <li>Churn Prediction</li>
             <li>Monday Brief Email</li>
+            <li>Churn Prediction</li>
             <li>Meeting Intelligence</li>
             <li>Action Proposal Engine</li>
             <li>Upsell Detection</li>
@@ -411,32 +389,42 @@
 
       <!-- Coherence -->
       <div class="coherence reveal">
-        <h3>The full revenue lifecycle in one subscription.</h3>
-        <p>Agencies are drowning in operational complexity and losing money because of it. Aurora solves both sides: generate content that wins new clients, then predict which ones are about to leave before they tell you.</p>
-        <div class="coherence-grid">
-          <div class="coherence-item">
-            <p class="ci-label" style="color: var(--reforge-accent);">ReForge</p>
-            <p class="ci-name">Revenue Generation</p>
-            <p class="ci-role">Content that wins new business</p>
+        <h3>The full revenue lifecycle.</h3>
+        <p>Nobody else offers both. Together, they tell a story no competitor can match.</p>
+        <div class="coherence-visual">
+          <div class="coherence-item rf">
+            <p class="ci-icon">&#x267B;&#xFE0F;</p>
+            <p class="ci-name">ReForge</p>
+            <p class="ci-role" style="color: var(--reforge-accent);">Win clients</p>
+            <p class="ci-desc">Content that earns new business</p>
           </div>
-          <div class="coherence-plus">+</div>
-          <div class="coherence-item">
-            <p class="ci-label" style="color: var(--clientpulse-accent);">ClientPulse</p>
-            <p class="ci-name">Revenue Retention</p>
-            <p class="ci-role">Intelligence that keeps existing clients</p>
+          <div class="coherence-arrow">+</div>
+          <div class="coherence-item cp">
+            <p class="ci-icon">&#x1F4CA;</p>
+            <p class="ci-name">ClientPulse</p>
+            <p class="ci-role" style="color: var(--clientpulse-accent);">Keep clients</p>
+            <p class="ci-desc">Intelligence that prevents churn</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- SOCIAL PROOF / POSITIONING -->
+  <div class="social-proof">
+    <div class="proof-inner reveal">
+      <p class="proof-quote">"We're not selling AI. We're selling a system that uses AI. Every AI product that's just a wrapper will die as models get cheaper. Aurora survives because the products have real data moats."</p>
+      <p class="proof-attr">Built by a solo founder in Germany. No VC. No 50-person team. Just focused product work and an obsessive commitment to solving problems that cost agencies real money.</p>
+    </div>
+  </div>
+
   <!-- PRICING -->
   <section id="pricing">
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Pricing</p>
-        <h2 class="section-title">Transparent pricing. No surprises.</h2>
-        <p class="section-desc">Start with a free trial. Upgrade when you're ready. Annual plans save 20%.</p>
+        <h2 class="section-title">Starts at less than one hour of agency time.</h2>
+        <p class="section-desc">Start with a free trial. Upgrade when you're ready. Annual plans save 20%. Early adopters get 30% off their first year.</p>
       </div>
 
       <!-- ReForge Pricing -->
@@ -447,7 +435,6 @@
           <span class="pp-tag" style="background: rgba(240,200,76,0.12); color: var(--reforge-accent);">Launching May 19</span>
         </div>
         <div class="pricing-grid">
-          <!-- Trial -->
           <div class="price-card">
             <p class="price-tier">Trial</p>
             <p class="price-amount">$0</p>
@@ -461,7 +448,6 @@
               <li class="excluded">Multi-client workspaces</li>
             </ul>
           </div>
-          <!-- Starter -->
           <div class="price-card">
             <p class="price-tier">Starter</p>
             <p class="price-amount">$49<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
@@ -475,7 +461,6 @@
               <li class="excluded">Multi-client workspaces</li>
             </ul>
           </div>
-          <!-- Pro -->
           <div class="price-card highlighted">
             <span class="badge" style="background: var(--reforge-accent); color: var(--bg-deep);">Most Popular</span>
             <p class="price-tier" style="color: var(--reforge-accent);">Pro</p>
@@ -487,11 +472,10 @@
               <li class="included">All 19 platforms</li>
               <li class="included">Brand Voice Engine</li>
               <li class="included">Content Intelligence</li>
-              <li class="included">Content Map analyzer</li>
+              <li class="included">Content Map Analyzer</li>
               <li class="excluded">Multi-client workspaces</li>
             </ul>
           </div>
-          <!-- Agency -->
           <div class="price-card">
             <p class="price-tier">Agency</p>
             <p class="price-amount">$399<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
@@ -519,7 +503,6 @@
           <span class="pp-tag" style="background: rgba(56,232,200,0.12); color: var(--clientpulse-accent);">Launching July</span>
         </div>
         <div class="pricing-grid">
-          <!-- Trial -->
           <div class="price-card">
             <p class="price-tier">Trial</p>
             <p class="price-amount">$0</p>
@@ -533,7 +516,6 @@
               <li class="excluded">Churn Prediction</li>
             </ul>
           </div>
-          <!-- Starter -->
           <div class="price-card">
             <p class="price-tier">Starter</p>
             <p class="price-amount">$59<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
@@ -548,7 +530,6 @@
               <li class="excluded">Churn Prediction Agent</li>
             </ul>
           </div>
-          <!-- Pro -->
           <div class="price-card highlighted">
             <span class="badge" style="background: var(--clientpulse-accent); color: var(--bg-deep);">Most Popular</span>
             <p class="price-tier" style="color: var(--clientpulse-accent);">Pro</p>
@@ -565,7 +546,6 @@
               <li class="excluded">White-label reports</li>
             </ul>
           </div>
-          <!-- Agency -->
           <div class="price-card">
             <p class="price-tier">Agency</p>
             <p class="price-amount">$499<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
@@ -592,7 +572,7 @@
         <p style="color: var(--text-muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 0.5rem;">ReForge Agency + ClientPulse Agency in one subscription.</p>
         <p class="bundle-price">$699<span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></p>
         <p class="bundle-save">Save $199/month vs. buying separately ($2,388/year saved)</p>
-        <p class="bundle-desc">The "win and keep" package. Nobody else offers both content intelligence and client health in one subscription. After six months of compounding data in both products, walking away is nearly unthinkable.</p>
+        <p class="bundle-desc">The "win and keep" package. After six months of compounding data in both products, the switching cost is real — not because we lock you in, but because the intelligence is yours and it keeps getting better.</p>
         <div class="bundle-includes">
           <span class="bi-item" style="color: var(--reforge-accent);">&#x267B;&#xFE0F; ReForge Agency ($399)</span>
           <span style="color: var(--text-muted); opacity: 0.3;">+</span>
@@ -613,35 +593,36 @@
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Our Story</p>
-        <h2 class="section-title">Built for one buyer. Solving two problems.</h2>
+        <h2 class="section-title">Why these two products. Why agencies. Why now.</h2>
       </div>
 
-      <div class="story-content reveal">
-        <p><strong>Aurora builds AI intelligence tools for agencies.</strong> Not a platform. Not a suite of 20 features. Two focused products that each solve one expensive problem agencies face every day.</p>
+      <div class="story-layout">
+        <div class="story-content reveal">
+          <p>Here's the honest framework: if your product's value is "put a prompt into ChatGPT for you and show the output in a nicer UI," you're dead. Every AI product that's just a wrapper will die as models get cheaper and more accessible. That's what killed our first product.</p>
 
-        <p>An agency evaluating ReForge alone might compare it to Jasper or Copy.ai. An agency evaluating ClientPulse alone might compare it to a CRM dashboard. But nobody else offers both — and together, they tell a story no competitor can match: <strong>"We help you win clients and keep them."</strong></p>
+          <p>But there are two things raw AI models fundamentally cannot do, and this is where your surviving products have real ground to stand on:</p>
 
-        <p>There's a reason these aren't generic tools. Every Aurora product passes three tests before it ships:</p>
-      </div>
+          <p><strong>Models can't connect to your data and run persistently.</strong> ChatGPT can't replicate that because ChatGPT doesn't have access to your agency's data, doesn't run on a schedule, and doesn't maintain state across weeks. ClientPulse isn't an AI wrapper — it's a data aggregation product with AI intelligence on top. The integrations, the persistent scoring, the weekly automated brief — that's the product.</p>
 
-      <div class="story-principles reveal">
-        <div class="sp-item">
-          <span class="sp-num">1</span>
-          <p class="sp-text"><strong>Does it have a data moat?</strong> Both products get smarter with use. ReForge's Brand Voice Engine compounds voice data over time. ClientPulse's Health Score trains on your specific client patterns, not generic benchmarks. The longer you use them, the harder they are to replace.</p>
+          <p><strong>Models can't run a multi-step pipeline end-to-end.</strong> With ReForge, the value isn't "AI writes a LinkedIn post." The value is: upload one podcast, content intelligence extracts 15 segments, generates 50+ outputs in your voice across 16 platforms — you review in Kanban, approve, publish directly to X/LinkedIn/WordPress, track performance, learn what works. That's a workflow, not a prompt.</p>
+
+          <p class="story-quote">"We're not selling AI. We're selling a system that uses AI. The AI is the engine. The product is the car."</p>
         </div>
-        <div class="sp-item">
-          <span class="sp-num">2</span>
-          <p class="sp-text"><strong>Can it launch with one connector?</strong> Low friction onboarding matters. ReForge needs one piece of content to start. ClientPulse needs one Stripe OAuth click. No lengthy integrations. Value on day one.</p>
-        </div>
-        <div class="sp-item">
-          <span class="sp-num">3</span>
-          <p class="sp-text"><strong>Does it compound over time?</strong> Recursive learning means every interaction makes the product better at understanding your clients, your voice, your patterns. Six months in, Aurora knows your agency better than any generic tool ever could.</p>
-        </div>
-      </div>
 
-      <div class="story-content reveal" style="margin-top: 2rem;">
-        <p>Aurora is built by a solo founder in Germany. No VC. No 50-person team. Just focused product work, real engineering, and an obsessive commitment to solving problems that cost agencies real money. Every line of code, every agent, every model — built to earn its place in your workflow.</p>
-        <p style="color: var(--accent-primary); font-weight: 600;">The question we ask every day: "What's the next most expensive problem agencies have that sits between winning clients and keeping them?"</p>
+        <div class="story-principles reveal">
+          <div class="sp-item">
+            <h4>Every product must have a data moat.</h4>
+            <p>ReForge's Voice Engine compounds brand voice data with every piece you approve. ClientPulse's Health Score trains on your specific client patterns. Six months in, no competitor can replicate what you've built — because the intelligence is uniquely yours.</p>
+          </div>
+          <div class="sp-item">
+            <h4>One connector to first value.</h4>
+            <p>ReForge needs one transcript. ClientPulse needs one Stripe OAuth click. No 4-step onboarding. No "connect your CRM + calendar + Gmail + Zoom minimum." If the intelligence is good, this alone drives retention.</p>
+          </div>
+          <div class="sp-item">
+            <h4>Products must compound over time.</h4>
+            <p>Recursive learning means every interaction — every approved draft, every client save, every Monday Brief — feeds back into the system. The voice engine is noticeably better at month 3 than day 1. That's the retention hook.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -649,7 +630,7 @@
   <!-- WAITLIST CTA -->
   <section id="waitlist">
     <div class="section-inner">
-      <div class="reveal" style="max-width: 600px; margin: 0 auto;">
+      <div class="reveal" style="max-width: 600px; margin: 0 auto; position: relative; z-index: 1;">
         <p class="section-label">Early Access</p>
         <h2 class="section-title">Get in before everyone else.</h2>
         <p class="section-desc section-desc-center">ReForge launches May 19. ClientPulse follows in July. Early access members get 30% off their first year and shape the product roadmap.</p>
@@ -692,55 +673,61 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.08}s`;
+      el.style.transitionDelay = `${i * 0.06}s`;
       observer.observe(el);
     });
 
-    // Aurora Core Supabase — eu-central-1 (Frankfurt) for GDPR data residency
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text-primary)' : '';
+      });
+    });
+
+    // Waitlist form — Supabase
     const SUPABASE_URL = 'https://couuozshvmspfvkfjhzs.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvdXVvenNodm1zcGZ2a2ZqaHpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0OTY0MDYsImV4cCI6MjA5MTA3MjQwNn0.oPB-K3l1LFCPxYdU_2bwQhTJP7ENXjDx6Jq8jCHTVZw';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvdXVvenNodm1zcGZ2a2ZqaHpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4Njk0NDksImV4cCI6MjA1OTQ0NTQ0OX0.oj37S9bXYAM9l3JKMDwJQsEJlscvQEDRX0F7yjJONdM';
 
     async function submitForm(e, successId) {
       e.preventDefault();
       const form = e.target;
       const email = form.querySelector('input[type="email"]').value;
-      const source = form.id === 'hero-form' ? 'hero' : 'bottom';
-
       try {
-        await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/waitlist', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
             'Prefer': 'return=minimal'
           },
-          body: JSON.stringify({ email, source })
+          body: JSON.stringify({ email, source: 'helloaurora.ai' })
         });
+        if (res.ok || res.status === 201 || res.status === 409) {
+          form.style.display = 'none';
+          document.getElementById(successId).classList.add('show');
+        }
       } catch (err) {
-        console.error('Waitlist error:', err);
+        form.style.display = 'none';
+        document.getElementById(successId).classList.add('show');
       }
-
-      form.style.display = 'none';
-      document.getElementById(successId).classList.add('show');
     }
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-    const navObserver = new IntersectionObserver((entries) => {
+    // Animate impact numbers on scroll
+    const impactNums = document.querySelectorAll('.impact-num');
+    const impactObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => {
-            link.style.color = link.getAttribute('href') === `#${id}`
-              ? 'var(--text-primary)' : '';
-          });
+          entry.target.style.animation = 'countIn 0.6s ease-out forwards';
+          impactObs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.4 });
-
-    sections.forEach(s => navObserver.observe(s));
+    }, { threshold: 0.5 });
+    impactNums.forEach(el => impactObs.observe(el));
   </script>
 </body>
 </html>
