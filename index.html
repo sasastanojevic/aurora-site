@@ -124,6 +124,33 @@
     .product-link { display: inline-block; margin-left: 1.2rem; font-size: 0.85rem; text-decoration: none; font-weight: 600; transition: opacity 0.25s; }
     .product-link:hover { opacity: 0.75; }
 
+    /* ── Workflow Steps ── */
+    .workflow-steps { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .wf-step { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .wf-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; margin-top: 2px; }
+    .wf-step div { flex: 1; }
+    .wf-step strong { font-size: 0.9rem; display: block; margin-bottom: 0.15rem; }
+    .wf-step p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; margin: 0; }
+
+    /* ── Audience ── */
+    .audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .audience-item { background: var(--bg-polar); border: 1px solid rgba(76, 201, 240, 0.06); border-radius: 14px; padding: 1.8rem; text-align: left; transition: border-color 0.3s; }
+    .audience-item:hover { border-color: rgba(76, 201, 240, 0.15); }
+    .audience-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+    .audience-item p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+    @media (max-width: 900px) { .audience-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .audience-grid { grid-template-columns: 1fr; } }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 720px; margin: 2rem auto 0; }
+    .faq-item { background: var(--bg-twilight); border: 1px solid rgba(76, 201, 240, 0.06); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; transition: border-color 0.3s; }
+    .faq-item:hover { border-color: rgba(76, 201, 240, 0.12); }
+    .faq-item summary { padding: 1.2rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 1.2rem; color: var(--accent-primary); transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item p { padding: 0 1.5rem 1.2rem; font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; }
+
     /* ── Coherence ── */
     .coherence { margin-top: 3rem; background: linear-gradient(135deg, rgba(56,232,200,0.03), rgba(240,200,76,0.03)); border-radius: 16px; padding: 3rem; border: 1px solid rgba(76, 201, 240, 0.08); text-align: center; }
     .coherence h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.6rem; }
@@ -253,7 +280,7 @@
         <a href="#products">Products</a>
         <a href="#pricing">Pricing</a>
         <a href="#story">Our Story</a>
-        <a href="#waitlist">Contact</a>
+        <a href="#faq">FAQ</a>
         <a href="#waitlist" class="nav-cta">Get Early Access</a>
       </div>
     </div>
@@ -264,7 +291,7 @@
     <div class="hero-content">
       <p class="hero-eyebrow">AI Intelligence for Agencies</p>
       <h1><span class="gradient-text">Win clients.</span> Keep clients.</h1>
-      <p class="hero-sub-head">One podcast becomes 50+ pieces in your client's voice. One Stripe connection predicts which clients are about to leave. Two products. One mission: protect agency revenue.</p>
+      <p class="hero-sub-head">Aurora is the AI-powered operating system for agencies. Two products, one mission: help you deliver better content and never lose a client you could have saved.</p>
 
       <form class="hero-form" id="hero-form" onsubmit="submitForm(event, 'hero-success')">
         <input type="email" placeholder="you@agency.com" required>
@@ -333,8 +360,8 @@
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Our Products</p>
-        <h2 class="section-title">Not another AI tool. A system that uses AI.</h2>
-        <p class="section-desc">The AI is the engine. The product is the car. You don't need to know how the engine works — you just need it to drive.</p>
+        <h2 class="section-title">Two products. One workflow for your agency.</h2>
+        <p class="section-desc">Most agency tools solve one problem. Aurora gives you a complete operating rhythm — from content creation to client retention — built around how agencies actually work.</p>
       </div>
 
       <div class="product-showcase">
@@ -352,16 +379,12 @@
             <p class="roi-context" style="color: var(--text-muted);">Across 19 platforms &middot; In your client's voice &middot; Ready to publish</p>
           </div>
 
-          <ul class="product-features-compact">
-            <li style="--dot-color: var(--reforge-accent);">Brand Voice Engine</li>
-            <li>Direct Publishing</li>
-            <li>Content Intelligence</li>
-            <li>19 Platform Formats</li>
-            <li>Recursive Learning</li>
-            <li>Multi-Client Workspaces</li>
-            <li>Voice Consistency Checker</li>
-            <li>Batch Processing</li>
-          </ul>
+          <div class="workflow-steps">
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">1</span><div><strong style="color: var(--reforge-accent);">Discover</strong><p>Drop in a podcast, video, or blog. ReForge mines 15+ segments from every source.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">2</span><div><strong style="color: var(--reforge-accent);">Create</strong><p>Generate 50+ platform-ready pieces in your client's voice. Review in a Kanban board.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">3</span><div><strong style="color: var(--reforge-accent);">Engage</strong><p>Every comment and mention across platforms in one inbox. AI drafts responses in your client's voice. <em style="opacity:0.6;">Coming soon</em></p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent);">4</span><div><strong style="color: var(--reforge-accent);">Learn</strong><p>See what's performing. Get content suggestions backed by data. One click from insight to draft. <em style="opacity:0.6;">Coming soon</em></p></div></div>
+          </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <div class="product-status" style="color: var(--reforge-accent);"><span class="status-dot" style="background: var(--reforge-accent);"></span> Launching May 19</div>
             <a href="https://reforge.helloaurora.ai" class="product-link" style="color: var(--reforge-accent);">Try Beta &#x2192;</a>
@@ -381,16 +404,12 @@
             <p class="roi-context" style="color: var(--text-muted);">One Stripe click &middot; Monday Brief emails &middot; Automatic save plans</p>
           </div>
 
-          <ul class="product-features-compact">
-            <li>Client Health Score</li>
-            <li>Stripe Revenue Sync</li>
-            <li>Monday Brief Email</li>
-            <li>Churn Prediction</li>
-            <li>Meeting Intelligence</li>
-            <li>Action Proposal Engine</li>
-            <li>Upsell Detection</li>
-            <li>Recursive Learning</li>
-          </ul>
+          <div class="workflow-steps">
+            <div class="wf-step"><span class="wf-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">1</span><div><strong style="color: var(--clientpulse-accent);">Connect</strong><p>Plug in Stripe and you're live. Add Google Calendar, Gmail, and Zoom to sharpen the signal.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">2</span><div><strong style="color: var(--clientpulse-accent);">Monitor</strong><p>Every client gets a Health Score (0-100). Your Monday Brief tells you who's thriving and who's slipping.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">3</span><div><strong style="color: var(--clientpulse-accent);">Act</strong><p>ClientPulse drafts the check-in email, suggests the QBR, and surfaces the upsell opportunity.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(56,232,200,0.15); color: var(--clientpulse-accent);">4</span><div><strong style="color: var(--clientpulse-accent);">Review</strong><p>Track trends, measure prediction accuracy, export reports. Prove your value with data.</p></div></div>
+          </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <div class="product-status" style="color: var(--clientpulse-accent);"><span class="status-dot" style="background: var(--clientpulse-accent);"></span> Launching June 2026</div>
             <a href="https://clientpulse.helloaurora.ai" class="product-link" style="color: var(--clientpulse-accent);">Learn More &#x2192;</a>
@@ -460,6 +479,35 @@
       </div>
     </div>
   </div>
+
+  <!-- WHO IT'S FOR -->
+  <section id="audience" style="background: var(--bg-deep);">
+    <div class="section-inner" style="text-align: center;">
+      <div class="reveal">
+        <p class="section-label">Who it's for</p>
+        <h2 class="section-title">Built for agencies. Not bolted on later.</h2>
+        <p class="section-desc section-desc-center">Aurora is purpose-built for the teams that need it most.</p>
+      </div>
+      <div class="audience-grid reveal">
+        <div class="audience-item">
+          <h4>Digital Marketing Agencies</h4>
+          <p>Managing content, paid media, SEO, and social across 5-50 client accounts.</p>
+        </div>
+        <div class="audience-item">
+          <h4>Social Media Agencies</h4>
+          <p>High client volume, high content output, high churn risk.</p>
+        </div>
+        <div class="audience-item">
+          <h4>Creative &amp; PR Agencies</h4>
+          <p>Relationship-heavy, retainer-based, where one lost client costs $60K/year.</p>
+        </div>
+        <div class="audience-item">
+          <h4>Freelancers (5-15 clients)</h4>
+          <p>Solo operators who need the leverage of a full team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- PRICING -->
   <section id="pricing">
@@ -636,33 +684,47 @@
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Why Aurora</p>
-        <h2 class="section-title">AI tools that get smarter the longer you use them.</h2>
-        <p class="section-desc">Most AI tools are wrappers around ChatGPT. Aurora is different. These are systems that connect to your data, run persistently, and compound intelligence over time. The AI is the engine — the product is the car.</p>
+        <h2 class="section-title">Three reasons agencies choose Aurora.</h2>
+        <p class="section-desc">We're not selling AI. We're selling a system that uses AI to run your agency better.</p>
       </div>
 
       <div class="story-layout">
         <div class="story-content reveal">
-          <p><strong>ChatGPT can't do what Aurora does.</strong> It can't connect to your Stripe account and monitor payment patterns every week. It can't maintain a voice profile trained on 6 months of your client's approved content. It can't send you a Monday morning email with "3 healthy clients, 1 at risk, here's what to do."</p>
-
-          <p>Aurora products aren't prompts in a nicer UI — they're <strong>persistent intelligence systems</strong> that connect to your agency's real data, learn your specific patterns, and automate workflows that would take your team hours every week.</p>
-
-          <p><strong>The result:</strong> the longer you use Aurora, the more valuable it becomes. ReForge's Voice Engine at month 6 produces drafts your clients can't tell from human-written. ClientPulse's Health Score at month 6 catches risk signals you didn't even know to look for.</p>
+          <p><strong>1. Workflow, not features.</strong> Most tools give you a feature and leave you to figure out when to use it. Aurora gives you a daily operating rhythm. Open ReForge in the morning to handle engagement and queue content. Open ClientPulse to scan health scores and act on at-risk clients. Done before your 10 AM call.</p>
+          <p><strong>2. Your voice, your data, your intelligence.</strong> ReForge's Voice Engine learns how each client communicates — not generic AI copy. ClientPulse's Health Score calibrates to your agency's churn patterns. Both get smarter with every interaction.</p>
+          <p><strong>3. One person can run it.</strong> Aurora is built for solo founders and lean teams. No dedicated ops person needed. No 6-week onboarding. Connect your tools, and the AI agents do the heavy lifting.</p>
         </div>
 
         <div class="story-principles reveal">
           <div class="sp-item">
-            <h4>Your data builds your moat.</h4>
-            <p>Every approved draft, every client interaction, every Monday Brief trains the system on your agency's unique patterns. After 6 months, your Aurora instance is irreplaceable — not because we lock you in, but because the intelligence is uniquely yours.</p>
+            <h4>The founder story</h4>
+            <p>I'm Sasa. I started Aurora because I watched agencies drown in two problems: producing enough quality content for their clients, and losing clients they could have saved if they'd seen the warning signs. ReForge solves the first. ClientPulse solves the second. Together, they're the operating system I wish existed.</p>
           </div>
           <div class="sp-item">
-            <h4>Value from minute one.</h4>
-            <p>ReForge needs one transcript. ClientPulse needs one Stripe click. No 4-week onboarding. No "connect 5 tools before you see anything." You get actionable output in your first session.</p>
-          </div>
-          <div class="sp-item">
-            <h4>Recursive learning, not static rules.</h4>
-            <p>Every interaction feeds back into the system. Approve a draft? The voice model sharpens. Save a client? The risk model recalibrates. Aurora doesn't just run — it learns.</p>
+            <h4>Bootstrapped. No VC. No bloat.</h4>
+            <p>Aurora is profitable-by-design and built in public. Two products that do what they promise. The longer you use them, the more valuable they become — not because we lock you in, but because the intelligence is uniquely yours.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: var(--bg-polar);">
+    <div class="section-inner">
+      <div class="reveal" style="text-align: center;">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">Common questions.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item"><summary>Do I need both products?</summary><p>No. ReForge and ClientPulse work independently. But agencies using both get the full revenue lifecycle — win clients with content, keep them with intelligence. The Agency Suite bundle saves $199/month.</p></details>
+        <details class="faq-item"><summary>How is this different from ChatGPT or Jasper?</summary><p>ChatGPT can't connect to your Stripe account, maintain voice profiles across 20 clients, or send you a Monday morning email with churn alerts. Aurora products are persistent intelligence systems, not prompt wrappers.</p></details>
+        <details class="faq-item"><summary>What integrations are supported?</summary><p>ReForge publishes to X/Twitter, LinkedIn, and WordPress (more coming). ClientPulse connects to Stripe, Google Calendar, Gmail, and Zoom. Both use OAuth — no API keys needed.</p></details>
+        <details class="faq-item"><summary>Is my data safe?</summary><p>All data is stored in EU Frankfurt (Supabase), encrypted at rest and in transit. Your data never trains our AI models. We're GDPR compliant with full data retention controls and account deletion.</p></details>
+        <details class="faq-item"><summary>Can I try before I buy?</summary><p>Yes. ReForge offers 3 free repurposes (no card required). ClientPulse offers a 7-day free trial with up to 3 clients tracked.</p></details>
+        <details class="faq-item"><summary>What does "founding member pricing" mean?</summary><p>The first 50 agencies get 30% off their first year, locked in for life. You also get direct access to Sasa (the founder) and influence over the product roadmap.</p></details>
+        <details class="faq-item"><summary>When do the products launch?</summary><p>ReForge launches May 19, 2026 on Product Hunt. ClientPulse follows in early July 2026. The Agency Suite bundle goes live once both products are available.</p></details>
+        <details class="faq-item"><summary>I'm a solo freelancer, not an agency. Is this for me?</summary><p>Absolutely. If you manage 5+ clients and need leverage, Aurora works for you. The Starter tiers are designed specifically for solo operators.</p></details>
       </div>
     </div>
   </section>
