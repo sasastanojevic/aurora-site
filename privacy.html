@@ -102,11 +102,18 @@
     <h3>3.4 Payment Data</h3>
     <p>Payment processing is handled entirely by Stripe. We do not store credit card numbers or bank account details. We receive from Stripe: subscription status, plan type, customer ID, and payment timestamps. Legal basis: Art. 6(1)(b) GDPR — necessary for contract performance.</p>
 
-    <h3>3.5 X (Twitter) Account Data</h3>
-    <p>If you connect your X account via OAuth 2.0 (available in VeritasX), we receive: your X username, display name, profile image URL, and an access/refresh token pair. We use this data to enable X-dependent features (performance tracking, posting time optimization). You can disconnect your X account at any time. Legal basis: Art. 6(1)(a) GDPR — your explicit consent.</p>
+    <h3>3.5 Connected Publishing Accounts (X, LinkedIn, WordPress)</h3>
+    <p>If you connect a third-party publishing or social account via OAuth 2.0 — available in VeritasX (X) and ReForge (X/Twitter, LinkedIn, WordPress) — we receive the following for each connection:</p>
+    <ul>
+      <li><strong>X (Twitter) OAuth 2.0 PKCE:</strong> username, display name, profile image URL, and an access/refresh token pair. Used for profile context, performance tracking (VeritasX), and direct publishing of ReForge-generated posts to your authenticated account.</li>
+      <li><strong>LinkedIn OAuth 2.0:</strong> member ID, name, profile image URL, and an access token. Used solely to publish ReForge-generated posts to your authenticated account. We do not read your feed or your connections.</li>
+      <li><strong>WordPress (self-hosted or WordPress.com REST API):</strong> the site URL and Application Password / OAuth credential you supply. Used solely to publish ReForge-generated posts as drafts or published articles on the site you authorise. We do not read posts, comments, users, or settings beyond what is required to create the new content.</li>
+    </ul>
+    <p>Tokens are stored encrypted at rest and are scoped to the minimum permissions required for publishing. You can disconnect any integration at any time from the in-app settings, which triggers token deletion within 30 days. Legal basis: Art. 6(1)(a) GDPR — your explicit consent; Art. 6(1)(b) GDPR — performance of the publishing contract.</p>
 
-    <h3>3.6 Voice Profile Data</h3>
-    <p>If you use VeritasX's Voice Fingerprint feature, we build a writing style profile from your past analyses. This profile includes vocabulary patterns, tone preferences, hook styles, and sentence structure — it does not include biometric voice data. Legal basis: Art. 6(1)(b) GDPR — necessary for the personalized service you requested.</p>
+    <h3>3.6 Voice Profile Data (Voice Fingerprint / ReForge Brand Voice Engine)</h3>
+    <p>If you use VeritasX's Voice Fingerprint feature or ReForge's Brand Voice Engine, we build a writing-style profile from content you submit or approve. The profile includes vocabulary patterns, tone preferences, hook styles, sentence structure, and — for ReForge — platform-specific variants. <strong>It does not include biometric voice data</strong> (no audio voiceprints, no physiological identifiers); the term "voice" refers to writing style.</p>
+    <p>For ReForge specifically, the profile is supported by three layers: (1) a style-guide summary, (2) performance-learning signals derived from your approvals, rejections, and edits (the "Recursive Learning Loop"), and (3) a pgvector retrieval-augmented generation (RAG) index of short stylistic samples ("voice_samples") stored in our EU Supabase database. Samples are text-only, scoped to your workspace by row-level security, and never shared across accounts. Legal basis: Art. 6(1)(b) GDPR — necessary for the personalised service you requested.</p>
 
     <h3>3.7 Server Logs</h3>
     <p>Our hosting providers automatically collect: IP address, browser type, referring URL, pages visited, and access timestamps. This data is used for security monitoring and abuse prevention. Legal basis: Art. 6(1)(f) GDPR — legitimate interest in security.</p>
@@ -179,6 +186,30 @@
           <td><span class="product-tag tag-reforge">ReForge</span> <span class="product-tag tag-clientpulse">ClientPulse</span></td>
         </tr>
         <tr>
+          <td><strong>AssemblyAI, Inc.</strong></td>
+          <td>Speech-to-text transcription of user-uploaded podcast/video audio files for ReForge content repurposing. Per AssemblyAI's API terms as of April 2026, uploaded audio and transcripts are not used to train their models.</td>
+          <td>US</td>
+          <td><span class="product-tag tag-reforge">ReForge</span></td>
+        </tr>
+        <tr>
+          <td><strong>Inngest, Inc.</strong></td>
+          <td>Background job orchestration (transcription dispatch, multi-stage content generation pipeline, scheduled publishing, learning-loop rebuilds). Jobs carry content IDs and generation context; the underlying content remains in our Supabase EU database.</td>
+          <td>US</td>
+          <td><span class="product-tag tag-reforge">ReForge</span></td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn Corporation</strong></td>
+          <td>LinkedIn OAuth 2.0 authentication; REST Publishing API (post ReForge-generated content to your authenticated LinkedIn account on your instruction).</td>
+          <td>US (DPF-certified)</td>
+          <td><span class="product-tag tag-reforge">ReForge</span></td>
+        </tr>
+        <tr>
+          <td><strong>WordPress sites (your chosen destinations)</strong></td>
+          <td>When you connect a WordPress site to ReForge for direct publishing, the site operator acts as an independent controller for content you publish. ReForge transmits generated posts to the site URL and credentials you provide.</td>
+          <td>Operator-dependent</td>
+          <td><span class="product-tag tag-reforge">ReForge</span></td>
+        </tr>
+        <tr>
           <td><strong>Google LLC</strong></td>
           <td>Google OAuth 2.0 authentication; Gmail API (read/analyze inbound &amp; outbound client communications where the user grants read access); Google Calendar API (read/sync events for meeting intelligence and client context). Only metadata and user-authorized mailboxes/calendars are accessed; scopes are minimised and revocable at any time.</td>
           <td>US (DPF-certified)</td>
@@ -222,7 +253,7 @@
     <h2>5. International Data Transfers</h2>
     <p>The majority of our data processors are based in the United States. We ensure lawful data transfers through the following mechanisms:</p>
     <ul>
-      <li><strong>EU-US Data Privacy Framework (DPF):</strong> For processors certified under the DPF (Stripe, Cloudflare, Vercel, GitHub, OpenAI, Anthropic, Resend, Google, Zoom).</li>
+      <li><strong>EU-US Data Privacy Framework (DPF):</strong> For processors certified under the DPF (Stripe, Cloudflare, Vercel, GitHub, OpenAI, Anthropic, Resend, Google, Zoom, LinkedIn).</li>
       <li><strong>Standard Contractual Clauses (SCCs):</strong> For non-DPF US-incorporated processors and as a backup safeguard, we rely on the European Commission's Standard Contractual Clauses pursuant to Art. 46(2)(c) GDPR.</li>
       <li><strong>Supplementary measures:</strong> Encryption in transit (TLS 1.3), encryption at rest (AES-256), row-level security policies enforced at the database layer, and data residency in EU regions where supported (Supabase eu-central-1 for all products except AgentForge; Resend eu-west-1; Vercel fra1 for all products except AgentForge).</li>
     </ul>
@@ -234,6 +265,19 @@
       <li>Your submitted content is processed in real time and not permanently stored by the AI provider.</li>
       <li>AI-generated results (rewrites, scores, analysis) are stored in our Supabase database and linked to your account.</li>
       <li>Voice Fingerprint profiles are derived solely from your stored analyses and do not include any biometric data.</li>
+    </ul>
+
+    <h2>6b. ReForge-Specific Processing</h2>
+    <p>ReForge is an AI Content Repurposing Studio. When you use ReForge, we process the following data categories for the purposes listed. Legal basis: Art. 6(1)(b) GDPR — performance of the ReForge service contract; Art. 6(1)(a) GDPR — your explicit consent for each connected publishing integration.</p>
+    <ul>
+      <li><strong>Source content you submit:</strong> Long-form text, blog posts, transcripts, and user-provided URLs (e.g., podcast or YouTube links) are ingested and segmented by the Content Intelligence pipeline to produce platform-specific derivatives.</li>
+      <li><strong>Uploaded audio/video files:</strong> If you upload a podcast or video file, it is stored temporarily in our Supabase EU (Frankfurt) Storage "media" bucket, transcribed via AssemblyAI (and/or OpenAI Whisper), and then processed by our Generation Agent. Raw uploaded media is retained only as long as required to complete transcription and the immediate repurposing pipeline, and is purged within 30 days of upload; the resulting transcript is retained with the linked repurpose record.</li>
+      <li><strong>Generated outputs (repurposes):</strong> ReForge produces up to 50+ platform-optimised derivatives per source across 16+ platforms (X/Twitter, LinkedIn, Blog, Substack, Threads, Instagram captions, Facebook, TikTok captions, Reddit, Bluesky, Medium, short-form video scripts, email sequences, podcast show notes, etc.). These derivatives are stored in our Supabase EU database linked to your workspace and subject to row-level security.</li>
+      <li><strong>Brand Voice Engine data:</strong> As described in §3.6, ReForge maintains voice profiles, voice samples (text only), voice corrections, and recursive-learning signals derived from your approvals, rejections, and edits. These are used exclusively to improve generation quality for your own workspace and are never shared across accounts.</li>
+      <li><strong>Publishing connections:</strong> Where you connect X/Twitter, LinkedIn, or WordPress (see §3.5), ReForge sends generated posts to those destinations only on your explicit instruction (manual publish or scheduled publish that you have configured). No automated publishing occurs without your prior action.</li>
+      <li><strong>Background job processing (Inngest):</strong> Transcription dispatch, multi-stage generation, QA-Agent evaluation, publishing, and learning-loop rebuilds run as background jobs. Job payloads reference internal content IDs; the content itself stays in our Supabase EU database.</li>
+      <li><strong>Human review of AI outputs:</strong> All ReForge-generated content passes through a Kanban review queue. You can edit, approve, reject, or delete any item before publishing. No item is automatically posted to a third-party platform without your explicit approval or a schedule you have configured. This supports your Art. 22 GDPR right not to be subject to solely automated decision-making.</li>
+      <li><strong>Anti-distillation note:</strong> ReForge does not expose your raw voice profile, voice samples, or recursive-learning signals to any third party, and does not use your Agency-tier clients' voice data to train models available to other accounts.</li>
     </ul>
 
     <h2>6a. ClientPulse-Specific Processing</h2>
@@ -269,6 +313,9 @@
       <li><strong>Payment records:</strong> Retained for 10 years as required by German tax law (§ 147 AO, § 257 HGB).</li>
       <li><strong>Server logs:</strong> Automatically purged after 90 days.</li>
       <li><strong>X OAuth tokens:</strong> Deleted immediately when you disconnect your X account or delete your Aurora account.</li>
+      <li><strong>ReForge LinkedIn and WordPress publishing credentials:</strong> Deleted within 30 days when you disconnect the integration or delete your Aurora account.</li>
+      <li><strong>ReForge uploaded media (audio/video):</strong> Raw uploads in the Supabase Storage "media" bucket are retained only as long as required to complete transcription and the immediate repurposing pipeline, and are purged within 30 days of upload. Transcripts and generated derivatives are retained with the linked repurpose record for the duration of your workspace account.</li>
+      <li><strong>ReForge voice samples, voice corrections, and learning signals:</strong> Retained for the duration of your workspace account and deleted when you reset your voice profile or delete your Aurora account.</li>
       <li><strong>ClientPulse OAuth tokens (Gmail, Google Calendar, Zoom, Stripe, Slack):</strong> Deleted within 30 days when you disconnect the integration or delete your Aurora account. Revocation is also propagated to the provider via their OAuth revocation endpoint where supported.</li>
       <li><strong>ClientPulse meeting transcripts:</strong> Retained for 365 days from creation, then automatically purged. Users may delete individual transcripts on demand.</li>
       <li><strong>ClientPulse email content (raw bodies):</strong> Retained for 180 days from ingestion, then automatically purged. Derived signals (health scores, sentiment deltas) are retained for the duration of the workspace account.</li>
