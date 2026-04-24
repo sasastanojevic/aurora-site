@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Processing Agreement — Aurora AI Solutions Studio</title>
+  <meta name="description" content="Data Processing Agreement (DPA) for Aurora AI Solutions Studio UG — GDPR/DSGVO compliant. Covers ReForge and ClientPulse." />
+  <!-- Self-hosted fonts — no third-party requests (GDPR/DSGVO compliant) -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <style>
+    :root {
+      --bg-deep: #06090f;
+      --bg-card: #0c1220;
+      --text-primary: #e8eaf0;
+      --text-secondary: #94a3b8;
+      --accent-blue: #4cc9f0;
+      --accent-purple: #b388eb;
+      --accent-teal: #38e8c8;
+      --accent-amber: #f0c84c;
+      --aurora-gradient: linear-gradient(135deg, #4cc9f0, #b388eb, #38e8c8);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg-deep); color: var(--text-primary); line-height: 1.7; min-height: 100vh; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: rgba(6,9,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(76,201,240,0.1); }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; background: var(--aurora-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent-blue); }
+    .legal-container { max-width: 800px; margin: 0 auto; padding: 8rem 2rem 4rem; }
+    .legal-container h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; background: var(--aurora-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .legal-container .subtitle { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; }
+    .legal-container h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--accent-blue); margin-top: 2.5rem; margin-bottom: 1rem; }
+    .legal-container h3 { font-size: 1.1rem; color: var(--text-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .legal-container p, .legal-container li { color: var(--text-secondary); margin-bottom: 0.8rem; font-size: 0.95rem; }
+    .legal-container a { color: var(--accent-blue); text-decoration: none; }
+    .legal-container a:hover { text-decoration: underline; }
+    .legal-container ul, .legal-container ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .legal-container strong { color: var(--text-primary); }
+    .info-card { background: var(--bg-card); border: 1px solid rgba(76,201,240,0.15); border-radius: 12px; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+    .info-card p { margin-bottom: 0.4rem; }
+    .info-card strong { color: var(--text-primary); }
+    .product-section { background: rgba(12,18,32,0.5); border: 1px solid rgba(76,201,240,0.1); border-left: 3px solid var(--accent-teal); border-radius: 8px; padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+    .product-section.clientpulse { border-left-color: var(--accent-purple); }
+    .product-section h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-top: 0; color: var(--text-primary); }
+    .processor-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .processor-table th { text-align: left; padding: 0.75rem 1rem; background: var(--bg-card); color: var(--accent-blue); border-bottom: 1px solid rgba(76,201,240,0.2); font-weight: 600; }
+    .processor-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(76,201,240,0.08); color: var(--text-secondary); vertical-align: top; }
+    .processor-table tr:hover td { background: rgba(76,201,240,0.03); }
+    .callout { background: rgba(240,200,76,0.06); border-left: 3px solid var(--accent-amber); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+    .callout p { margin-bottom: 0.4rem; }
+    .placeholder-note { background: rgba(179,136,235,0.06); border: 1px dashed rgba(179,136,235,0.3); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; color: var(--text-secondary); font-style: italic; font-size: 0.9rem; }
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(76,201,240,0.1); margin-top: 4rem; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; background: var(--aurora-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+    .footer-links { margin-bottom: 1rem; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 0.75rem; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--accent-blue); }
+    .footer-copy { color: var(--text-secondary); font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .legal-container { padding: 6rem 1.25rem 3rem; }
+      .legal-container h1 { font-size: 1.8rem; }
+      nav { padding: 0.75rem 1rem; }
+      .nav-links a { margin-left: 0.75rem; font-size: 0.85rem; }
+      .processor-table { font-size: 0.8rem; }
+      .processor-table th, .processor-table td { padding: 0.5rem; }
+      .product-section { padding: 1.25rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-brand">Aurora</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </nav>
+
+  <div class="legal-container">
+    <h1>Data Processing Agreement</h1>
+    <p class="subtitle">DPA — Last updated: April 24, 2026</p>
+
+    <h2>1. Parties &amp; Scope</h2>
+    <div class="info-card">
+      <p><strong>Controller:</strong> Aurora AI Solutions Studio UG (haftungsbeschränkt)</p>
+      <p>Friedhofstr. 10, 70191 Stuttgart, Germany</p>
+      <p>E-Mail: <a href="mailto:info@helloaurora.ai">info@helloaurora.ai</a></p>
+      <p><strong>Data Protection Contact:</strong> Sasa Stanojevic — <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a></p>
+    </div>
+    <p>This Data Processing Agreement ("DPA") is entered into between Aurora AI Solutions Studio UG (haftungsbeschränkt), a German company ("Aurora," "Controller," "we"), and our users and customers ("Data Subjects," "you"). It governs how Aurora processes personal data in the course of providing its products in compliance with the EU General Data Protection Regulation (GDPR/DSGVO), the German Federal Data Protection Act (BDSG), and applicable national data protection laws.</p>
+    <p>This DPA is supplementary to and should be read in conjunction with our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>. It becomes effective the moment you accept the Terms of Service of the relevant Aurora product and remains in force for the duration of the service relationship.</p>
+
+    <h2>2. Products Covered</h2>
+    <p>This DPA applies to all Aurora products. Because each product has a different processing footprint (different sub-processors, data categories, and retention rules), product-specific details are consolidated under Section 4 below. General obligations that apply across all products live in Sections 5–13.</p>
+    <ul>
+      <li><strong>ReForge</strong> — AI content repurposing studio. <a href="https://reforge.helloaurora.ai">reforge.helloaurora.ai</a></li>
+      <li><strong>ClientPulse</strong> — client relationship signal platform. <em>(in development)</em></li>
+    </ul>
+
+    <h2>3. Definitions</h2>
+    <p>For the purposes of this DPA, the following terms shall have the meanings set forth below:</p>
+    <ul>
+      <li><strong>Controller:</strong> Aurora AI Solutions Studio UG, the entity that determines the purposes and means of personal data processing.</li>
+      <li><strong>Processor (Sub-Processor):</strong> Any entity that processes personal data on behalf of the Controller (e.g., Supabase, Anthropic, Vercel, Sentry, Inngest, Deepgram, AssemblyAI, Stripe).</li>
+      <li><strong>Data Subject:</strong> Any individual to whom personal data relates — including Aurora users, and individuals whose data is processed through an Aurora product (e.g., audience members, meeting participants, customer contacts).</li>
+      <li><strong>Personal Data:</strong> Any information relating to an identified or identifiable natural person, including but not limited to name, email, IP address, content data, usage logs, and metadata.</li>
+      <li><strong>Processing:</strong> Any operation performed on personal data — collection, recording, organisation, structuring, storage, adaptation, retrieval, consultation, use, disclosure, transmission, erasure, or destruction.</li>
+      <li><strong>Special Categories of Data:</strong> Personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade-union membership, genetic data, biometric data for identification, health data, or data concerning sex life or sexual orientation.</li>
+    </ul>
+
+    <h2>4. Product-Specific Processing</h2>
+
+    <div class="product-section">
+      <h3>4.1 ReForge</h3>
+      <p><strong>Categories of Data Subjects</strong></p>
+      <ul>
+        <li>ReForge account holders and their users</li>
+        <li>Employees, contractors, and representatives of account holders</li>
+        <li>End-users and audiences of users' published content (social-media followers, website visitors)</li>
+        <li>Individuals referenced in — or whose voices appear in — source content uploaded to ReForge</li>
+      </ul>
+
+      <p><strong>Categories of Personal Data</strong></p>
+      <ul>
+        <li>Account information: email, name, profile data, authentication credentials</li>
+        <li>Content data: blog posts, articles, transcripts, scripts, and other long-form content provided by users</li>
+        <li>Audio &amp; video uploads for transcription (see §4.1a below for the consent-specific rules)</li>
+        <li>Generated outputs: AI-generated social posts, captions, scripts, and repurposed content</li>
+        <li>Connected-account data: OAuth identifiers and tokens for X/Twitter, LinkedIn, WordPress (encrypted at rest)</li>
+        <li>Voice-profile data: text-only writing-style fingerprints (<strong>not biometric voiceprints</strong>)</li>
+        <li>Usage data: interaction logs, timestamps, device/browser type, IP address, feature usage</li>
+        <li>Payment data: billing address, payment-method identifiers (processed by Stripe)</li>
+        <li>Communication data: support messages, feedback, service correspondence</li>
+      </ul>
+
+      <p><strong>Purposes of Processing</strong></p>
+      <ul>
+        <li>Provision of the ReForge service and AI-powered content generation</li>
+        <li>Audio/video transcription via Deepgram (primary) or AssemblyAI (legacy fallback)</li>
+        <li>Account management, authentication, customer support</li>
+        <li>Payment processing and billing administration</li>
+        <li>Service improvement, analytics, usage monitoring</li>
+        <li>Security, fraud detection, incident investigation</li>
+        <li>Legal compliance and contractual fulfilment</li>
+      </ul>
+
+      <p><strong>ReForge Sub-Processors</strong></p>
+      <table class="processor-table">
+        <thead>
+          <tr>
+            <th>Sub-Processor</th>
+            <th>Location</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase Inc.</strong></td>
+            <td>EU (AWS eu-central-1, Frankfurt)</td>
+            <td>Database, authentication, storage (media bucket for uploads), row-level security</td>
+          </tr>
+          <tr>
+            <td><strong>Vercel Inc.</strong></td>
+            <td>Compute: Frankfurt (fra1); CDN edge: global anycast</td>
+            <td>Application hosting, edge functions, CDN</td>
+          </tr>
+          <tr>
+            <td><strong>Anthropic PBC</strong> (Claude API)</td>
+            <td>United States (SCCs)</td>
+            <td>AI content processing and generation</td>
+          </tr>
+          <tr>
+            <td><strong>Deepgram, Inc.</strong></td>
+            <td>United States (SCCs)</td>
+            <td>Audio/video transcription (primary provider)</td>
+          </tr>
+          <tr>
+            <td><strong>AssemblyAI, Inc.</strong></td>
+            <td>United States (SCCs)</td>
+            <td>Audio transcription (legacy fallback only)</td>
+          </tr>
+          <tr>
+            <td><strong>Inngest, Inc.</strong></td>
+            <td>United States (SCCs)</td>
+            <td>Background job orchestration, workflow management</td>
+          </tr>
+          <tr>
+            <td><strong>Sentry (Functional Software, Inc.)</strong></td>
+            <td>United States (SCCs)</td>
+            <td>Error tracking, performance monitoring</td>
+          </tr>
+          <tr>
+            <td><strong>Stripe, Inc.</strong></td>
+            <td>United States (SCCs) / Stripe Payments Europe (Ireland)</td>
+            <td>Payment processing and billing</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The Controller may add or remove ReForge sub-processors with 30 days' prior notice. Users may object to the addition of a new sub-processor by writing to <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a> within 14 days of notification.</p>
+
+      <h3 id="audio-video-consent">4.1a Audio &amp; Video Uploads — Multi-Party Consent</h3>
+      <p>ReForge lets users upload audio and video files for transcription. Uploaded recordings are sent to our transcription sub-processor (Deepgram, or AssemblyAI as fallback) and are stored in the "media" bucket of Supabase's EU Frankfurt region.</p>
+      <p><strong>User acknowledgement.</strong> Because audio recordings often contain voices of people other than the uploading user (interview guests, meeting participants, podcast co-hosts), ReForge requires an explicit consent acknowledgement before every upload. By ticking the consent box and initiating an upload, the user confirms that:</p>
+      <ul>
+        <li>they own the rights to the recording, or have explicit permission from the rights holder;</li>
+        <li>every identifiable person whose voice appears in the recording has consented to the recording being transcribed by a third-party service; and</li>
+        <li>they agree to the processing of the recording by our transcription sub-processor under the terms of this DPA and the applicable Standard Contractual Clauses.</li>
+      </ul>
+      <p><strong>Audit trail.</strong> For each upload, ReForge records the consent-acknowledgement timestamp and the version of the consent text the user agreed to. The record is retained alongside the upload for the lifetime of the account and is produced on request in response to a Data Subject Access Request (Art. 15 GDPR).</p>
+      <p><strong>User responsibility.</strong> The uploading user is the controller with respect to any third parties whose voices appear in the recording. ReForge acts as a processor on behalf of the uploading user for transcription purposes. Users remain responsible for securing any consents required under applicable law in the jurisdiction of recording (including but not limited to two-party and all-party consent jurisdictions in the United States).</p>
+      <p><strong>Retention.</strong> Uploaded media files and their transcripts are retained for the duration of the user's account. On account deletion (Art. 17 GDPR), the corresponding blobs and transcripts are removed from Supabase storage and database within 30 days, subject to overriding legal retention obligations.</p>
+
+      <h3>4.1b ReForge Retention</h3>
+      <ul>
+        <li>Account data: retained while the account is active; personal identifiers deleted within 30 days of account deletion.</li>
+        <li>User-generated content: free accounts — content deleted 30 days after inactivity; paid accounts — retained until user deletion or subscription termination.</li>
+        <li>Uploaded media &amp; transcripts: as described in §4.1a.</li>
+        <li>Billing records: 7 years (German HGB / VAT).</li>
+        <li>Log data and metadata: 90 days.</li>
+      </ul>
+    </div>
+
+    <div class="product-section clientpulse">
+      <h3>4.2 ClientPulse</h3>
+      <div class="placeholder-note">
+        ClientPulse is in development. The ClientPulse-specific sub-processor list, data categories, and retention rules will be published in this section before the product becomes generally available. In the interim, the general obligations in §§5–13 and the cross-product sub-processors (Supabase, Vercel, Stripe, Sentry) apply.
+      </div>
+    </div>
+
+    <h2>5. International Data Transfers</h2>
+    <p><strong>Transfer mechanisms.</strong></p>
+    <ul>
+      <li><strong>EU-to-US transfers:</strong> Personal data transferred to sub-processors located in the United States are governed by Standard Contractual Clauses (SCCs) as approved by the European Commission, and — where the sub-processor participates — the EU-US Data Privacy Framework (DPF).</li>
+      <li><strong>EU data residency:</strong> User account data, generated content, and backups for ReForge and ClientPulse are stored in Supabase's EU Frankfurt region and served from Vercel's Frankfurt compute region, ensuring data remains within the European Economic Area where possible.</li>
+      <li>The Controller has conducted Transfer Impact Assessments (TIAs) and Data Protection Impact Assessments (DPIAs) for international transfers and maintains appropriate safeguards as required by Art. 46 GDPR.</li>
+    </ul>
+    <p><strong>Supplementary safeguards.</strong></p>
+    <ul>
+      <li>Encryption of data in transit (TLS) and at rest.</li>
+      <li>Contractual obligations on sub-processors to maintain GDPR-equivalent protections.</li>
+      <li>Regular audit and compliance assessments of sub-processors.</li>
+      <li>Ability to request data return or deletion upon contract termination.</li>
+    </ul>
+
+    <h2>6. Security Measures</h2>
+    <p>The Controller implements technical and organisational measures appropriate to the risk, including:</p>
+    <ul>
+      <li><strong>Encryption:</strong> TLS/HTTPS in transit; industry-standard encryption at rest.</li>
+      <li><strong>Access controls:</strong> role-based access (RBAC), principle of least privilege, multi-factor authentication for administrative access.</li>
+      <li><strong>Row-Level Security (RLS):</strong> database-level access policies so users can only access their own data.</li>
+      <li><strong>Authentication:</strong> bcrypt-hashed passwords via Supabase Auth, session management, optional 2FA.</li>
+      <li><strong>Audit logging:</strong> access to sensitive data is logged and retained for security and compliance purposes.</li>
+      <li><strong>Vulnerability management:</strong> regular security audits, dependency scanning, timely patching.</li>
+      <li><strong>Backups:</strong> encrypted backups performed regularly.</li>
+      <li><strong>Personnel:</strong> all persons handling personal data receive data-protection and security training.</li>
+    </ul>
+    <p>While we implement industry-standard security measures, no system is entirely secure. The Controller cannot guarantee absolute security and is not liable for unauthorised third-party access resulting from causes beyond its reasonable control.</p>
+
+    <h2>7. Data Subject Rights</h2>
+    <p>The Controller shall provide reasonable assistance to Data Subjects in exercising their rights under the GDPR:</p>
+    <ul>
+      <li><strong>Right to access (Art. 15):</strong> we will provide a copy of your personal data in a portable, machine-readable format within 30 days.</li>
+      <li><strong>Right to rectification (Art. 16):</strong> correct inaccurate data via the product dashboard or by contacting support.</li>
+      <li><strong>Right to erasure (Art. 17):</strong> we will delete account data within 30 days, subject to legal retention obligations (e.g. 7-year HGB retention for billing records).</li>
+      <li><strong>Right to restrict processing (Art. 18):</strong> request suspension of processing pending resolution of a dispute.</li>
+      <li><strong>Right to data portability (Art. 20):</strong> receive your data in a structured, commonly-used, machine-readable format (CSV, JSON).</li>
+      <li><strong>Right to object (Art. 21):</strong> object to processing for direct marketing or other non-essential purposes.</li>
+      <li><strong>Right to lodge a complaint:</strong> you may complain to your local data-protection authority — see §12.</li>
+    </ul>
+    <p>To exercise any of these rights, contact <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a>. We will respond within 30 days or as required by law.</p>
+
+    <h2>8. Data-Breach Notification</h2>
+    <ul>
+      <li>The Controller will notify affected Data Subjects without undue delay and no later than 72 hours after becoming aware of a personal-data breach, as required by Art. 33 GDPR.</li>
+      <li>Notifications include details of the breach, likely consequences, and measures taken to mitigate harm.</li>
+      <li>Relevant supervisory authorities will be notified as required by law.</li>
+      <li>Sub-processors are contractually required to notify the Controller within 24 hours of discovering a breach affecting personal data.</li>
+    </ul>
+
+    <h2>9. Audit Rights</h2>
+    <ul>
+      <li>Supervisory authorities may audit the Controller's data-processing activities as part of their statutory duties.</li>
+      <li>The Controller periodically audits sub-processors to ensure compliance with data-protection obligations, and may request evidence of compliance from sub-processors.</li>
+      <li>Data Subjects may request information about how their data is being processed by writing to <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a>.</li>
+    </ul>
+
+    <h2>10. Term &amp; Termination</h2>
+    <ul>
+      <li>This DPA is effective on acceptance of the relevant product Terms of Service and remains in effect for the duration of the service relationship.</li>
+      <li>On account deletion or service termination, the Controller shall cease processing personal data, except where legally required to retain.</li>
+      <li>The Controller will delete or return personal data within 60 days of termination at the Data Subject's request, unless longer retention is legally required.</li>
+      <li>Sub-processors will be instructed to delete or securely destroy personal data per the Controller's instructions.</li>
+      <li>Obligations related to data security, breach notification, and legal compliance survive termination.</li>
+    </ul>
+
+    <h2>11. Amendments</h2>
+    <p>The Controller may amend this DPA to reflect changes in data-protection law, business practice, or sub-processors. Material changes (e.g. addition of a sub-processor, change of region) will be communicated with at least 30 days' prior notice. Users may object to a change by writing to <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a> within 14 days of notification.</p>
+
+    <h2>12. Right to Lodge a Complaint</h2>
+    <p>You may lodge a complaint with a supervisory authority. The competent authority for Aurora is:</p>
+    <div class="info-card">
+      <p><strong>Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg</strong></p>
+      <p>Lautenschlagerstr. 20, 70173 Stuttgart</p>
+      <p>Website: <a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a></p>
+    </div>
+
+    <h2>13. Governing Law</h2>
+    <p>This DPA is governed by the laws of the Federal Republic of Germany and the GDPR (EU) 2016/679. Disputes concerning data processing or data-subject rights are subject to German law and the jurisdiction of German courts. Data Subjects may also lodge complaints with the supervisory authority in their own jurisdiction.</p>
+
+    <div class="callout">
+      <p><strong>Contact.</strong> For questions about this DPA or to exercise data-subject rights, write to <a href="mailto:privacy@helloaurora.ai">privacy@helloaurora.ai</a>. This DPA is supplementary to our <a href="/privacy.html">Privacy Policy</a> and should be read in conjunction with it.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Aurora</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/dpa.html">DPA</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="mailto:info@helloaurora.ai">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Aurora AI Solutions Studio UG (haftungsbeschränkt) — helloaurora.ai</div>
+  </footer>
+</body>
+</html>
