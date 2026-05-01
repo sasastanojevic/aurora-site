@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aurora — AI Intelligence Tools for Agencies | helloaurora.ai</title>
-  <meta name="description" content="Aurora builds AI intelligence tools for agencies. ReForge turns one piece of content into 50+ in your client's voice. ClientPulse predicts client churn 60 days early. Win clients. Keep clients.">
-  <meta property="og:title" content="Aurora — Win clients. Keep clients.">
-  <meta property="og:description" content="AI intelligence tools for agencies. Content that wins new business. Intelligence that keeps existing clients.">
+  <title>Aurora — Agency intelligence with the loop closed | helloaurora.ai</title>
+  <meta name="description" content="Most AI content products stop at publish. Aurora measures what landed, learns per-client, and feeds it back into your retention dashboard. ReForge multiplies content in your client's voice. ClientPulse predicts churn 60 days early. The loop closes — that's the moat.">
+  <meta property="og:title" content="Aurora — Most AI content products stop at publish. Aurora doesn't.">
+  <meta property="og:description" content="Agency-priced intelligence with the loop closed. Per-client voice learning, content velocity as a churn signal, MCP-native, available from your IDE.">
   <meta property="og:url" content="https://helloaurora.ai">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Aurora">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aurora — Win clients. Keep clients.">
-  <meta name="twitter:description" content="AI intelligence tools for agencies. Content that wins new business. Intelligence that keeps existing clients.">
+  <meta name="twitter:title" content="Aurora — The loop closes.">
+  <meta name="twitter:description" content="Agency intelligence: per-client voice learning, content velocity as a churn signal, MCP-native. Most AI content products stop at publish. Aurora doesn't.">
   <link rel="stylesheet" href="fonts/fonts.css">
   <!-- Display + body + mono fonts via bunny.net (GDPR-compliant EU CDN, no Google tracking).
        Existing self-hosted Outfit/Playfair stay loaded as a fallback during the typography
@@ -45,6 +45,12 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); line-height: 1.7; font-weight: 400; overflow-x: hidden; }
 
+    /* ── Pre-launch banner ── */
+    .pre-launch-banner { background: linear-gradient(90deg, rgba(56,232,200,0.16), rgba(76,201,240,0.16)); border-bottom: 1px solid rgba(56,232,200,0.3); padding: 0.55rem 1.5rem; text-align: center; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2px; line-height: 1.4; }
+    .pre-launch-banner strong { color: var(--accent-tertiary); font-weight: 700; }
+    .pre-launch-banner a { color: var(--accent-tertiary); text-decoration: none; border-bottom: 1px solid rgba(56,232,200,0.4); }
+    .pre-launch-banner a:hover { border-bottom-color: var(--accent-tertiary); }
+
     /* ── Nav ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(6, 9, 15, 0.82); border-bottom: 1px solid rgba(76, 201, 240, 0.08); }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
@@ -72,9 +78,14 @@
     .hero-form input[type="email"]::placeholder { color: var(--text-muted); opacity: 0.6; }
     .hero-form button { padding: 0.85rem 1.8rem; background: var(--aurora-gradient); color: var(--bg-deep); border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: opacity 0.25s, transform 0.2s; white-space: nowrap; }
     .hero-form button:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; max-width: 520px; margin: 0 auto; flex-wrap: wrap; }
+    .hero-btn-primary, .hero-btn-secondary { padding: 0.85rem 1.8rem; border-radius: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: opacity 0.25s, transform 0.2s; white-space: nowrap; display: inline-block; }
+    .hero-btn-primary { background: var(--aurora-gradient); color: var(--bg-deep) !important; }
+    .hero-btn-secondary { background: rgba(76, 201, 240, 0.08); color: var(--accent-primary); border: 1px solid rgba(76, 201, 240, 0.2); }
+    .hero-btn-primary:hover, .hero-btn-secondary:hover { opacity: 0.88; transform: translateY(-1px); }
     .success-msg { display: none; color: var(--accent-tertiary); font-weight: 600; margin-top: 1rem; }
     .success-msg.show { display: block; }
-    .hero-fine { margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); opacity: 0.5; }
+    .hero-fine { margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted); opacity: 0.6; line-height: 1.6; }
 
     /* ── Section shared ── */
     section { padding: 7rem 2rem; }
@@ -235,7 +246,7 @@
     .pricing-product-header .pp-icon svg { width: 24px; height: 24px; }
     .pricing-product-header h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; }
     .pricing-product-header .pp-tag { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.2rem 0.6rem; border-radius: 4px; margin-left: 0.5rem; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
     .price-card { background: var(--bg-twilight); border: 1px solid rgba(76, 201, 240, 0.06); border-radius: 14px; padding: 1.8rem; position: relative; transition: border-color 0.3s; }
     .price-card:hover { border-color: rgba(76, 201, 240, 0.15); }
     .price-card.highlighted { border-color: var(--accent-primary); }
@@ -331,6 +342,10 @@
 
   <!-- NAV -->
   <nav>
+    <div class="pre-launch-banner">
+      <strong>Private launch · Summer 2026.</strong>
+      Try the live demo today; paid signups open after our German company registration completes.
+    </div>
     <div class="nav-inner">
       <a href="#" class="nav-brand">Aurora</a>
       <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
@@ -341,7 +356,7 @@
         <a href="#products">Products</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
-        <a href="#waitlist" class="nav-cta">Get Started</a>
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="nav-cta">Try the demo</a>
       </div>
     </div>
   </nav>
@@ -349,16 +364,15 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <p class="hero-eyebrow">AI Intelligence for Agencies</p>
-      <h1><span class="gradient-text">Win clients.</span> Keep clients.</h1>
-      <p class="hero-sub-head">One workflow, two products. <strong style="color: var(--text-primary); font-weight: 500; white-space: nowrap;">Connect &middot; Discover &middot; Decide &middot; Act &middot; Learn</strong>&nbsp;&mdash; across content (ReForge) and clients (ClientPulse). The loop closes, and gets sharper every time you use it.</p>
+      <p class="hero-eyebrow">Agency intelligence &middot; MCP-native &middot; Agency-priced</p>
+      <h1>Most AI content products stop at publish.<br><span class="gradient-text">Aurora doesn't.</span></h1>
+      <p class="hero-sub-head">We measure what landed, learn per-client, and feed it back into your retention dashboard. <strong style="color: var(--text-primary); font-weight: 500;">ReForge</strong> multiplies content in your client's voice. <strong style="color: var(--text-primary); font-weight: 500;">ClientPulse</strong> predicts churn 60 days early. The loop closes &mdash; and gets sharper every time you use it.</p>
 
-      <form class="hero-form" id="hero-form" onsubmit="submitForm(event, 'hero-success')">
-        <input type="email" placeholder="you@agency.com" required>
-        <button type="submit">Get Started</button>
-      </form>
-      <div id="hero-success" class="success-msg">You're on the list. We'll be in touch soon.</div>
-      <p class="hero-fine">Plans from $49/mo &middot; 30% off Agency + Suite first year &middot; <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a></p>
+      <div class="hero-actions">
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="hero-btn-primary">Try the live demo &rarr;</a>
+        <a href="#pricing" class="hero-btn-secondary">See pricing</a>
+      </div>
+      <p class="hero-fine">From $49/mo &middot; Solo+ $99 unlocks recursive voice learning &middot; 30% off Agency + Suite first year for the first 20 customers per tier &middot; <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy</a></p>
     </div>
   </section>
 
@@ -501,7 +515,7 @@
       <div class="reveal">
         <p class="section-label">Our Products</p>
         <h2 class="section-title">Two products. One workflow for your agency.</h2>
-        <p class="section-desc">Most agency tools solve one problem. Aurora gives you a complete operating rhythm — from content creation to client retention — built around how agencies actually work.</p>
+        <p class="section-desc">Most agency products solve one problem. Aurora gives you a complete operating rhythm &mdash; from content creation to client retention &mdash; built around how agencies actually work.</p>
       </div>
 
       <div class="product-showcase">
@@ -523,8 +537,8 @@
             <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">1</span><div><strong style="color: var(--reforge-accent);">Connect</strong><p>Wire up voice profiles, integrations, and your client roster. Once.</p></div></div>
             <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">2</span><div><strong style="color: var(--reforge-accent);">Discover</strong><p>Drop in a podcast, video, or blog. ReForge mines 15+ segments from every source.</p></div></div>
             <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">3</span><div><strong style="color: var(--reforge-accent);">Decide</strong><p>Review queue ranks 50+ generated pieces by quality &mdash; ship, edit, or reject.</p></div></div>
-            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">4</span><div><strong style="color: var(--reforge-accent);">Act</strong><p>Publish across 19 platforms from the calendar. Engage handles comments + mentions. <em style="opacity:0.6;">Engage: Coming soon</em></p></div></div>
-            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">5</span><div><strong style="color: var(--reforge-accent);">Learn</strong><p>Recursive voice + cadence learning &mdash; every outcome trains the next draft. <em style="opacity:0.6;">Coming soon</em></p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">4</span><div><strong style="color: var(--reforge-accent);">Act</strong><p>Publish across 19 platforms from the calendar. Engage measures reactions, comments, top engagers &mdash; direct API where available, email-bridge fallback for LinkedIn.</p></div></div>
+            <div class="wf-step"><span class="wf-num" style="background: rgba(240,200,76,0.15); color: var(--reforge-accent); font-family: var(--font-mono);">5</span><div><strong style="color: var(--reforge-accent);">Learn</strong><p>Approval/rejection events plus post-publish engagement feed back into the voice profile. First-draft approval rates climb 40% &rarr; 80%+ over 90 days, per client.</p></div></div>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <div class="product-status" style="color: var(--reforge-accent);"><span class="status-dot" style="background: var(--reforge-accent);"></span> Private launch · Summer 2026</div>
@@ -583,6 +597,31 @@
     </div>
   </section>
 
+  <!-- MCP / AGENCY-PRICED -->
+  <section id="built-in" style="background: var(--bg-deep); padding: 6rem 2rem;">
+    <div class="section-inner" style="text-align: center;">
+      <div class="reveal">
+        <p class="section-label">Built into your stack</p>
+        <h2 class="section-title">Drive Aurora from your IDE.<br><span class="gradient-text">Agency-priced, MCP-native.</span></h2>
+        <p class="section-desc section-desc-center">Both products ship a Model Context Protocol server. Pull voice profiles, run a content multiplication, check a client's health score &mdash; from <strong style="color: var(--text-primary); font-weight: 500;">Claude Desktop, Cursor, or VS Code</strong>, without ever opening a browser tab. Your team works where they already work.</p>
+      </div>
+      <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 980px; margin-left: auto; margin-right: auto; text-align: left;">
+        <div style="background: var(--bg-polar); border: 1px solid rgba(76,201,240,0.08); border-radius: 14px; padding: 1.8rem;">
+          <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-tertiary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem;">Per-client voice learning</p>
+          <p style="font-size: 0.92rem; color: var(--text-muted); font-weight: 300; line-height: 1.65;">Single-product content products can't do this &mdash; they have no client roster. Aurora keeps a separate voice profile per client that learns from every approval and rejection your team makes.</p>
+        </div>
+        <div style="background: var(--bg-polar); border: 1px solid rgba(76,201,240,0.08); border-radius: 14px; padding: 1.8rem;">
+          <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-tertiary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem;">Closed retention loop</p>
+          <p style="font-size: 0.92rem; color: var(--text-muted); font-weight: 300; line-height: 1.65;">Single-product CS platforms can't do this &mdash; they have no content engine. Aurora's Suite turns content velocity per client into a leading churn indicator no standalone CS product can offer.</p>
+        </div>
+        <div style="background: var(--bg-polar); border: 1px solid rgba(76,201,240,0.08); border-radius: 14px; padding: 1.8rem;">
+          <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-tertiary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem;">Agency-priced MCP</p>
+          <p style="font-size: 0.92rem; color: var(--text-muted); font-weight: 300; line-height: 1.65;">Jasper Business gates MCP at $300+/seat. HubSpot Marketing Pro is $890/mo plus $3,000 onboarding. Aurora $599 RF Agency / $999 Suite is the only sub-$1K MCP-native bundle for a 5&ndash;15 person agency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TRUST BAR -->
   <div class="social-proof">
     <div class="proof-inner reveal">
@@ -628,40 +667,42 @@
       <div class="reveal">
         <p class="section-label">Who it's for</p>
         <h2 class="section-title">Built for agencies. Not bolted on later.</h2>
-        <p class="section-desc section-desc-center">Aurora is purpose-built for the teams that need it most.</p>
+        <p class="section-desc section-desc-center">Four agency shapes we serve in the launch cohort. Same product, different angle on the moat.</p>
       </div>
       <div class="audience-grid reveal">
         <div class="audience-item">
-          <h4>Digital Marketing Agencies</h4>
-          <p>Managing content, paid media, SEO, and social across 5-50 client accounts.</p>
+          <h4>Boutique content / SEO agency</h4>
+          <p>3&ndash;7 people, 8&ndash;20 clients. The recursive voice profile is the lock-in: per-client approval data nobody else can replicate.</p>
         </div>
         <div class="audience-item">
-          <h4>Social Media Agencies</h4>
-          <p>High client volume, high content output, high churn risk.</p>
+          <h4>Multi-service growth agency</h4>
+          <p>8&ndash;15 people, 12&ndash;30 clients. Suite signal pipeline turns content velocity into a leading churn indicator before the CFO asks "why did Acme leave?"</p>
         </div>
         <div class="audience-item">
-          <h4>Creative &amp; PR Agencies</h4>
-          <p>Relationship-heavy, retainer-based, where one lost client costs $60K/year.</p>
+          <h4>Vertical agency</h4>
+          <p>Legal-tech, B2B SaaS, fitness coaching, wealth management. Per-client voice profiles keep your fintech client sounding nothing like your fitness client.</p>
         </div>
         <div class="audience-item">
-          <h4>Freelancers (5-15 clients)</h4>
-          <p>Solo operators who need the leverage of a full team.</p>
+          <h4>Agency-of-one / fractional CMO</h4>
+          <p>Solo, 3&ndash;8 retainers. Pull voice profiles into Claude Desktop via MCP. The persistence layer Claude doesn't have on its own.</p>
         </div>
       </div>
+      <p class="reveal" style="margin-top: 2.5rem; font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">
+        Solo content creator, B2B thought leader, podcaster, coach? <a href="/for-creators" style="color: var(--accent-primary); text-decoration: none; border-bottom: 1px solid rgba(76,201,240,0.4);">A separate page is on the way &rarr;</a>
+      </p>
     </div>
   </section>
 
   <!-- MID-PAGE CTA -->
   <div class="mid-cta reveal">
     <div class="section-inner">
-      <span class="urgency-badge">Only 50 founding spots</span>
-      <h3>Ready to run your agency smarter?</h3>
-      <p>First 50 agencies get 30% off — locked in for life. No credit card required to start.</p>
-      <form class="hero-form" id="mid-form" style="max-width: 460px; margin: 0 auto;" onsubmit="submitForm(event, 'mid-success')">
-        <input type="email" placeholder="you@agency.com" required>
-        <button type="submit">Get Started</button>
-      </form>
-      <div id="mid-success" class="success-msg">You're on the list. We'll be in touch soon.</div>
+      <span class="urgency-badge">First 20 customers · Agency + Suite only</span>
+      <h3>30% off for 12 months. Twenty seats per tier.</h3>
+      <p>Early Adopter pricing on the Agency tier of either product, or the full Agency Suite. Redeem at checkout with <code style="font-family: var(--font-mono); font-size: 0.85em; background: rgba(76,201,240,0.08); padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--accent-tertiary);">EA-RF-AGENCY-30</code>, <code style="font-family: var(--font-mono); font-size: 0.85em; background: rgba(76,201,240,0.08); padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--accent-tertiary);">EA-CP-AGENCY-30</code>, or <code style="font-family: var(--font-mono); font-size: 0.85em; background: rgba(76,201,240,0.08); padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--accent-tertiary);">EA-SUITE-30</code>. Stripe enforces the cap automatically.</p>
+      <div class="hero-actions" style="margin-top: 1.5rem;">
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="hero-btn-primary">Try the live demo &rarr;</a>
+        <a href="#pricing" class="hero-btn-secondary">See full pricing</a>
+      </div>
     </div>
   </div>
 
@@ -694,7 +735,23 @@
               <li class="included">1 seat</li>
               <li class="included">GPT-4o-mini (fast)</li>
             </ul>
-            <a href="https://reforge.helloaurora.ai/auth/signup?plan=rf_solo" class="price-cta secondary">Get Solo</a>
+            <a href="https://reforge.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
+          </div>
+          <div class="price-card">
+            <p class="price-tier">Solo+</p>
+            <p class="price-amount">$99<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
+            <p class="price-period">$83/mo billed annually</p>
+            <p class="price-desc">For B2B thought leaders and creators who care about voice fidelity.</p>
+            <ul class="price-features">
+              <li class="included">50 pieces/month</li>
+              <li class="included">6 channels per piece</li>
+              <li class="included">1 brand voice</li>
+              <li class="included">1 seat</li>
+              <li class="included">All models (Claude, GPT, Gemini)</li>
+              <li class="included">Recursive voice learning</li>
+              <li class="included">Read-only API &middot; 3 MCP connections</li>
+            </ul>
+            <a href="https://reforge.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
           </div>
           <div class="price-card">
             <p class="price-tier">Pro</p>
@@ -709,7 +766,7 @@
               <li class="included">All models (Claude, GPT, Gemini)</li>
               <li class="included">Read-only API · 3 MCP connections</li>
             </ul>
-            <a href="https://reforge.helloaurora.ai/auth/signup?plan=rf_pro" class="price-cta secondary">Get Pro</a>
+            <a href="https://reforge.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
           </div>
           <div class="price-card highlighted">
             <span class="badge" style="background: var(--reforge-accent); color: var(--bg-deep);">Most Popular</span>
@@ -726,7 +783,7 @@
               <li class="included">Full API · unlimited MCP</li>
               <li class="included">On-device (post-launch)</li>
             </ul>
-            <a href="https://reforge.helloaurora.ai/auth/signup?plan=rf_agency" class="price-cta primary">Get Agency</a>
+            <a href="https://reforge.helloaurora.ai/api/demo/signin" class="price-cta primary">Try the demo &rarr;</a>
           </div>
           <div class="price-card">
             <p class="price-tier">Enterprise</p>
@@ -766,7 +823,23 @@
               <li class="included">90-day data retention</li>
               <li class="included">1 seat</li>
             </ul>
-            <a href="https://clientpulse.helloaurora.ai/auth/signup?plan=cp_solo" class="price-cta secondary">Get Solo</a>
+            <a href="https://clientpulse.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
+          </div>
+          <div class="price-card">
+            <p class="price-tier">Solo+</p>
+            <p class="price-amount">$99<span style="font-size: 0.9rem; font-weight: 400;">/mo</span></p>
+            <p class="price-period">$83/mo billed annually</p>
+            <p class="price-desc">For solo consultants growing past 5 retained clients.</p>
+            <ul class="price-features">
+              <li class="included">7 clients tracked</li>
+              <li class="included">Hourly health refresh</li>
+              <li class="included">Stripe + Calendar integration</li>
+              <li class="included">12-month data retention</li>
+              <li class="included">All models (Claude, GPT, Gemini)</li>
+              <li class="included">Recursive learning insights</li>
+              <li class="included">Read-only API &middot; 3 MCP connections</li>
+            </ul>
+            <a href="https://clientpulse.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
           </div>
           <div class="price-card">
             <p class="price-tier">Pro</p>
@@ -782,7 +855,7 @@
               <li class="included">12-month retention · 3 seats</li>
               <li class="included">All models · 3 MCP connections</li>
             </ul>
-            <a href="https://clientpulse.helloaurora.ai/auth/signup?plan=cp_pro" class="price-cta secondary">Get Pro</a>
+            <a href="https://clientpulse.helloaurora.ai/api/demo/signin" class="price-cta secondary">Try the demo &rarr;</a>
           </div>
           <div class="price-card highlighted">
             <span class="badge" style="background: var(--clientpulse-accent); color: var(--bg-deep);">Most Popular</span>
@@ -800,7 +873,7 @@
               <li class="included">36-month retention</li>
               <li class="included">On-device (post-launch)</li>
             </ul>
-            <a href="https://clientpulse.helloaurora.ai/auth/signup?plan=cp_agency" class="price-cta primary">Get Agency</a>
+            <a href="https://clientpulse.helloaurora.ai/api/demo/signin" class="price-cta primary">Try the demo &rarr;</a>
           </div>
         </div>
       </div>
@@ -812,15 +885,15 @@
         <p style="color: var(--text-muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 0.5rem;">ReForge Agency + ClientPulse Agency in one subscription.</p>
         <p class="bundle-price">$999<span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></p>
         <p class="bundle-save">Save $399/month vs. buying separately ($599 + $799 = $1,398 stacked · $4,788 saved/year)</p>
-        <p class="bundle-desc">The "win and keep" package. After six months of compounding data in both products, the switching cost is real — not because we lock you in, but because the intelligence is yours and it keeps getting better.</p>
+        <p class="bundle-desc">The Suite is a feature, not a bundle discount. ReForge publishes content events (velocity, channel diversity, voice freshness, engagement delta). ClientPulse consumes them as a privileged signal. <strong style="color: var(--text-primary); font-weight: 500;">Content velocity becomes a leading churn indicator no standalone CS product can offer.</strong> A 30-day head start on every retention risk.</p>
         <div class="bundle-includes">
           <span class="bi-item" style="color: var(--reforge-accent); display: inline-flex; align-items: center; gap: 0.4rem;"><svg width="18" height="18" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="8" y1="36" x2="24" y2="36" stroke="#f0c84c" stroke-width="2.5" stroke-linecap="round"/><polyline points="20,32 24,36 20,40" stroke="#f0c84c" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 36 L36 22 L44 36 L36 50 Z" fill="none" stroke="#f0c84c" stroke-width="2.5" stroke-linejoin="round"/><path d="M32 36 L36 28 L40 36 L36 44 Z" fill="#f0c84c" opacity="0.15"/><line x1="44" y1="28" x2="62" y2="16" stroke="#f0c84c" stroke-width="2" stroke-linecap="round"/><line x1="44" y1="36" x2="64" y2="36" stroke="#f0c84c" stroke-width="2.5" stroke-linecap="round"/><line x1="44" y1="44" x2="62" y2="56" stroke="#f0c84c" stroke-width="2" stroke-linecap="round"/><circle cx="64" cy="36" r="2.5" fill="#f0c84c"/></svg> ReForge Agency ($599)</span>
           <span style="color: var(--text-muted); opacity: 0.3;">+</span>
           <span class="bi-item" style="color: var(--clientpulse-accent); display: inline-flex; align-items: center; gap: 0.4rem;"><svg width="18" height="18" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="url(#cpGrad4)"/><polyline points="7,20 13,20 16,12 20,28 24,12 27,20 33,20" stroke="#06090f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><defs><linearGradient id="cpGrad4" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#38e8c8"/><stop offset="100%" stop-color="#4cc9f0"/></linearGradient></defs></svg> ClientPulse Agency ($799)</span>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.5rem;">
-          <a href="https://reforge.helloaurora.ai/auth/signup?plan=suite" class="price-cta primary" style="background: var(--aurora-gradient); color: var(--bg-deep); font-weight: 600;">Get Agency Suite &rarr;</a>
-          <a href="mailto:hello@helloaurora.ai?subject=Aurora%20Suite%20enterprise%20inquiry" class="price-cta secondary">Talk to us</a>
+          <a href="https://reforge.helloaurora.ai/api/demo/signin" class="price-cta primary" style="background: var(--aurora-gradient); color: var(--bg-deep); font-weight: 600;">Try the demo &rarr;</a>
+          <a href="mailto:hello@helloaurora.ai?subject=Aurora%20Suite%20founder-led%20demo" class="price-cta secondary">Talk to Sasa</a>
         </div>
         <p class="bundle-note" style="margin-top: 1.25rem;">One subscription, both products. 30% off first year for early adopters. Enterprise pricing available on request.</p>
       </div>
@@ -843,9 +916,9 @@
 
       <div class="story-layout">
         <div class="story-content reveal">
-          <p><strong>1. Workflow, not features.</strong> Most tools give you a feature and leave you to figure out when to use it. Aurora gives you a daily operating rhythm. Open ReForge in the morning to handle engagement and queue content. Open ClientPulse to scan health scores and act on at-risk clients. Done before your 10 AM call.</p>
-          <p><strong>2. Your voice, your data, your intelligence.</strong> ReForge's Voice Engine learns how each client communicates — not generic AI copy. ClientPulse's Health Score calibrates to your agency's churn patterns. Both get smarter with every interaction.</p>
-          <p><strong>3. One person can run it.</strong> Aurora is built for solo founders and lean teams. No dedicated ops person needed. No 6-week onboarding. Connect your tools, and the AI agents do the heavy lifting.</p>
+          <p><strong>1. Workflow, not features.</strong> Most products hand you a feature and leave you to figure out when to use it. Aurora gives you a daily operating rhythm. Open ReForge in the morning to handle engagement and queue content. Open ClientPulse to scan health scores and act on at-risk clients. Done before your 10 AM call.</p>
+          <p><strong>2. Your voice, your data, your intelligence.</strong> ReForge's voice profile learns how each client communicates &mdash; not generic AI copy. ClientPulse's Health Score calibrates to your agency's churn patterns. Both get sharper with every interaction.</p>
+          <p><strong>3. One person can run it.</strong> Aurora is built for solo founders and lean teams. No dedicated ops person needed. No 6-week onboarding. Connect your stack, and the agents handle the rest.</p>
         </div>
 
         <div class="story-principles reveal">
@@ -870,35 +943,35 @@
         <h2 class="section-title">Common questions.</h2>
       </div>
       <div class="faq-list reveal">
-        <details class="faq-item"><summary>Do I need both products?</summary><p>No. ReForge and ClientPulse work independently. But agencies using both get the full revenue lifecycle — win clients with content, keep them with intelligence. The Agency Suite bundle saves $399/month ($599 + $799 stacked = $1,398, bundle is $999).</p></details>
-        <details class="faq-item"><summary>How is this different from ChatGPT or Jasper?</summary><p>ChatGPT can't connect to your Stripe account, maintain voice profiles across 20 clients, or send you a Monday morning email with churn alerts. Aurora products are persistent intelligence systems, not prompt wrappers.</p></details>
-        <details class="faq-item"><summary>What integrations are supported?</summary><p>ReForge publishes to X/Twitter, LinkedIn, and WordPress (more coming). ClientPulse connects to Stripe, Google Calendar, Gmail, and Zoom. Both use OAuth — no API keys needed.</p></details>
-        <details class="faq-item"><summary>Is my data safe?</summary><p>All data is stored in EU Frankfurt (Supabase), encrypted at rest and in transit. Your data never trains our AI models. We're GDPR compliant with full data retention controls and account deletion.</p></details>
-        <details class="faq-item"><summary>How do I get started?</summary><p>Plans start at $49/mo for ReForge (Solo) and $59/mo for ClientPulse (Solo). No free tier. Cancel anytime. Early Adopters get 30% off the first year on Agency + Agency Suite — redeem at Stripe Checkout with EA-RF-AGENCY-30, EA-CP-AGENCY-30, or EA-SUITE-30 (20 slots each).</p></details>
-        <details class="faq-item"><summary>What does the Early Adopter discount include?</summary><p>30% off the first year on Agency + Agency Suite — redeem with EA-RF-AGENCY-30, EA-CP-AGENCY-30, or EA-SUITE-30 at Stripe Checkout. 20 slots per SKU. Solo and Pro tiers are full price. Early Adopters also get direct access to Sasa (the founder) and influence over the product roadmap.</p></details>
-        <details class="faq-item"><summary>When do the products launch?</summary><p>Private launch to a curated agency shortlist in Summer 2026 — no fixed date, no Product Hunt. The launch gate fires when every readiness criterion is met. ClientPulse goes first, ReForge follows once file-upload transcription lands. The Agency Suite bundle activates when both products are live.</p></details>
-        <details class="faq-item"><summary>I'm a solo freelancer, not an agency. Is this for me?</summary><p>Absolutely. If you manage 5+ clients and need leverage, Aurora works for you. The Solo tiers are designed specifically for solo operators.</p></details>
-        <details class="faq-item"><summary>What if we already use Jasper, Copy.ai, or another AI writing tool?</summary><p>Those are prompt-and-generate tools — great for one-off drafts. ReForge is a workflow system: it mines segments from source content, maintains per-client voice profiles, publishes to 19+ platforms, and scores output quality. It replaces the "content assembly line," not just the first draft. Most teams find they cancel the other tool within a month.</p></details>
-        <details class="faq-item"><summary>How long until we see ROI?</summary><p>Most agencies see value on Day 1. Drop a single podcast into ReForge and get 50+ ready-to-publish pieces in under 10 minutes. Connect Stripe to ClientPulse and see your client health scores instantly. The "aha" moment isn't weeks away — it's your first session.</p></details>
-        <details class="faq-item"><summary>What happens if we cancel?</summary><p>You can export all your data at any time — voice profiles, content history, client health reports. No lock-in, no penalty. We'd rather earn your subscription every month than trap you with switching costs. That said, the intelligence compounds over time, so most agencies find it gets more valuable, not less.</p></details>
+        <details class="faq-item"><summary>Do I need both products?</summary><p>No. ReForge and ClientPulse work independently. The Agency Suite is the only place they talk to each other: ReForge publishes content events (velocity, channel diversity, voice freshness), ClientPulse consumes them as a privileged signal, and content velocity becomes a leading churn indicator no standalone CS platform can offer. The Suite is a feature, not a bundle discount.</p></details>
+        <details class="faq-item"><summary>How is this different from ChatGPT, Jasper, or HubSpot?</summary><p>ChatGPT can't connect to your Stripe, hold a separate voice profile per client, or learn from approval/rejection events. Jasper has Brand IQ and an MCP server — but MCP is gated to their Business tier ($300+/seat). HubSpot Marketing Pro has MCP at $890/mo plus $3,000 onboarding. Aurora is the only sub-$1K MCP-native bundle for a 5&ndash;15 person agency, with the closed-loop voice learning none of them ship.</p></details>
+        <details class="faq-item"><summary>What's the Solo+ tier?</summary><p>Solo $49 ships with GPT-4o-mini and no recursive voice learning &mdash; the kicking-the-tires plan. Solo+ at $99/mo unlocks all models (Claude, GPT, Gemini), recursive voice learning that climbs first-draft approval rates from 40% to 80%+ over 90 days, and 3 MCP connections. Same single-seat / single-voice scope as Solo. The right plan if you're already paying a ghostwriter $1,200+ per month.</p></details>
+        <details class="faq-item"><summary>What channels are supported at launch?</summary><p>YouTube (direct API), X/Twitter (direct API, pay-per-use), Apple Podcasts (Connect API). LinkedIn ships via email-bridge (forwarded notification emails parsed) at launch; native API switches on once our Community Management API approval lands. Meta (Facebook Pages, Instagram Business) follows post-HRB. Spotify Podcasters and Substack don't expose APIs we can use yet. Honest about native vs. bridge so you know which has full fidelity.</p></details>
+        <details class="faq-item"><summary>Is my data safe?</summary><p>All data is stored in EU Frankfurt (Supabase), encrypted at rest and in transit. Your data never trains our AI models. GDPR compliant with full data retention controls and account deletion.</p></details>
+        <details class="faq-item"><summary>How do I get started right now?</summary><p>Try the live demo &mdash; auto-signs you in as a sandboxed user with realistic seed data. Poke around the queue, the Monday Brief, voice profiles, the Suite signal pipeline. Paid signups open after our German company registration completes (Summer 2026). Drop your email at the bottom and we'll send one note when paid signups open.</p></details>
+        <details class="faq-item"><summary>What does the Early Adopter discount include?</summary><p>30% off for 12 months on the Agency tier of either product, or the full Agency Suite. The first 20 customers per tier &mdash; Stripe enforces the cap automatically. Redeem at checkout with <code>EA-RF-AGENCY-30</code>, <code>EA-CP-AGENCY-30</code>, or <code>EA-SUITE-30</code>. Solo, Solo+, and Pro tiers are full price. Early Adopters get direct access to Sasa (the founder) and influence over the roadmap.</p></details>
+        <details class="faq-item"><summary>When do the products launch?</summary><p>Private launch to a curated agency shortlist in Summer 2026 &mdash; no fixed date, no Product Hunt. We're building a deliberately small first-customer cohort so the recursive learning has clean signal to work with. The full Suite signal pipeline activates ~30 days after the first customers go live.</p></details>
+        <details class="faq-item"><summary>I'm a solo creator, not an agency. Is this for me?</summary><p>Yes &mdash; Solo+ at $99/mo is calibrated for B2B thought leaders, podcasters, and coach-creators who care about voice fidelity. A dedicated <a href="/for-creators" style="color: var(--accent-primary); border-bottom: 1px solid rgba(76,201,240,0.4); text-decoration: none;">/for-creators page</a> ships in launch+30 with persona-specific framing. Same product; different angle on the moat.</p></details>
+        <details class="faq-item"><summary>How long until we see value?</summary><p>Most agencies see immediate output on day 1. Drop a podcast into ReForge and get 50+ platform-ready pieces in under 10 minutes. Connect Stripe to ClientPulse and see your client health scores instantly. The recursive learning compounds from there &mdash; first-draft approval rates climb 40% &rarr; 80%+ over 90 days, per client.</p></details>
+        <details class="faq-item"><summary>What happens if we cancel?</summary><p>Export all your data at any time &mdash; voice profiles, content history, client health reports. No retention penalty. We'd rather earn your subscription every month than trap you with switching costs. The intelligence compounds with use, so the longer you stay, the more valuable it gets &mdash; that's the only switching cost that should matter.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- WAITLIST CTA -->
+  <!-- BOTTOM CTA -->
   <section id="waitlist">
     <div class="section-inner">
       <div class="reveal" style="max-width: 600px; margin: 0 auto; position: relative; z-index: 1;">
-        <p class="section-label">Join the list</p>
-        <h2 class="section-title">Your agency deserves better tools.</h2>
-        <p class="section-desc section-desc-center">Better content. Happier clients. Less busywork. Private launch in Summer 2026 to a curated agency shortlist.<br><strong style="color: var(--accent-tertiary);">Early Adopter slots: 20 per SKU · 30% off first year on Agency + Agency Suite.</strong></p>
+        <p class="section-label">Stay in the loop</p>
+        <h2 class="section-title">Notify me when paid signups open.</h2>
+        <p class="section-desc section-desc-center">Try the live demo today. Drop your email below and we'll send one note when paid signups open in Summer 2026 &mdash; including the Early Adopter access window for the first 20 customers per tier.<br><strong style="color: var(--accent-tertiary);">No drip nurture. One email. Unsubscribe is one click.</strong></p>
 
         <form class="hero-form" id="bottom-form" onsubmit="submitForm(event, 'bottom-success')">
           <input type="email" placeholder="you@agency.com" required>
-          <button type="submit">Join Waitlist</button>
+          <button type="submit">Notify me</button>
         </form>
-        <div id="bottom-success" class="success-msg">You're on the list. We'll be in touch soon.</div>
-        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; opacity: 0.7;">By signing up you agree to our <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a>.</p>
+        <div id="bottom-success" class="success-msg">Got it. We'll be in touch when paid signups open.</div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; opacity: 0.7;">By submitting your email you agree to our <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a>.</p>
       </div>
     </div>
   </section>
@@ -909,6 +982,7 @@
     <div class="footer-links">
       <a href="#products">Products</a>
       <a href="#pricing">Pricing</a>
+      <a href="/for-creators">For creators</a>
       <a href="#story">Our Story</a>
       <a href="mailto:hello@helloaurora.ai">Contact</a>
       <a href="/impressum">Impressum</a>
