@@ -336,19 +336,55 @@
       .bundle-card .bundle-price { font-size: 2.2rem; }
       .product-features-compact { grid-template-columns: 1fr; }
     }
-    /* ── Hero Mockup ── */
-    .hero-mockup-wrapper { position: relative; max-width: 960px; margin: 4rem auto 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(76, 201, 240, 0.2); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(76, 201, 240, 0.1); background: var(--bg-deep); animation: fadeUp 1s ease forwards 0.8s; opacity: 0; }
-    .hero-mockup-chrome { display: flex; align-items: center; padding: 0.75rem 1rem; background: #0a0f1a; border-bottom: 1px solid rgba(76, 201, 240, 0.1); gap: 0.5rem; }
-    .hm-dot { width: 12px; height: 12px; border-radius: 50%; }
+    /* ── Dual Hero Mockups ── */
+    .hero-dual-wrapper { position: relative; max-width: 1060px; height: 580px; margin: 4rem auto 0; animation: fadeUp 1s ease forwards 0.8s; opacity: 0; }
+    .dual-mockup { position: absolute; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline-strong); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6); background: var(--bg-polar); display: flex; flex-direction: column; text-align: left; transition: transform 0.4s ease, z-index 0s; }
+    
+    /* ClientPulse (Background/Left) */
+    .mockup-cp { width: 680px; height: 420px; bottom: 0; left: 0; z-index: 1; border-color: rgba(56, 232, 200, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 60px rgba(56, 232, 200, 0.08); transform: perspective(1000px) rotateY(4deg) translateZ(-40px); }
+    .mockup-cp:hover { transform: perspective(1000px) rotateY(0deg) translateZ(0px); z-index: 3; }
+    
+    /* ReForge (Foreground/Right) */
+    .mockup-rf { width: 680px; height: 420px; top: 0; right: 0; z-index: 2; border-color: rgba(240, 200, 76, 0.3); box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 60px rgba(240, 200, 76, 0.08); transform: perspective(1000px) rotateY(-4deg) translateZ(40px); }
+    .mockup-rf:hover { transform: perspective(1000px) rotateY(0deg) translateZ(60px); z-index: 3; }
+
+    .hm-chrome { display: flex; align-items: center; padding: 0.75rem 1rem; background: #0a0f1a; border-bottom: 1px solid var(--hairline-strong); gap: 0.5rem; }
+    .hm-chrome-title { margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); opacity: 0.7; letter-spacing: 0.5px; }
+    .hm-dot { width: 10px; height: 10px; border-radius: 50%; }
     .hm-dot.red { background: #e74c3c; }
     .hm-dot.yellow { background: #f0c84c; }
     .hm-dot.green { background: #38e8c8; }
-    .hero-mockup-body { display: flex; aspect-ratio: 16/9; background: var(--bg-polar); position: relative; overflow: hidden; text-align: left; }
-    .hm-sidebar { width: 220px; border-right: 1px solid var(--hairline-strong); background: #0a0f1a; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
-    .hm-main { flex: 1; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
-    .hm-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .hm-card { background: var(--bg-surface); border: 1px solid var(--hairline); border-radius: 8px; height: 100px; display: flex; flex-direction: column; justify-content: center; padding: 1.25rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .hm-content { flex: 1; background: var(--bg-surface); border: 1px solid var(--hairline); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    
+    .hm-body { flex: 1; display: flex; overflow: hidden; background: var(--bg-polar); }
+    .hm-sidebar { width: 180px; background: #0a0f1a; border-right: 1px solid var(--hairline-strong); padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .hm-main { flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    
+    /* CP specific */
+    .cp-row { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem; border: 1px solid var(--hairline); border-radius: 8px; background: var(--bg-surface); margin-bottom: 0.5rem; }
+    .cp-row.alert { border-color: rgba(56, 232, 200, 0.4); background: rgba(56, 232, 200, 0.05); }
+    .cp-btn { padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .cp-btn.action { background: rgba(56, 232, 200, 0.15); color: var(--clientpulse-accent); }
+    
+    /* RF specific */
+    .rf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: 100%; }
+    .rf-col { background: var(--bg-surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .rf-item { padding: 0.75rem; border-radius: 6px; background: var(--bg-polar); border: 1px solid var(--hairline); font-size: 0.8rem; }
+    .rf-item.highlight { border-color: rgba(240, 200, 76, 0.4); border-left: 3px solid var(--reforge-accent); }
+
+    /* Animated Connection Line */
+    .suite-connection { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+    .suite-connection path { stroke-dasharray: 10, 10; animation: dashFlow 20s linear infinite; }
+    @keyframes dashFlow { to { stroke-dashoffset: -1000; } }
+    
+    .connection-pulse {
+      width: 12px; height: 12px; background: #fff; border-radius: 50%; position: absolute;
+      box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
+      offset-path: path("M 460 330 C 560 330, 600 180, 700 180");
+      animation: followPath 3s ease-in-out infinite;
+      z-index: 5;
+    }
+    @keyframes followPath { 0% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -387,62 +423,131 @@
       </div>
       <p class="hero-fine">From $49/mo &middot; Solo+ $99 unlocks recursive voice learning &middot; 30% off Agency + Suite first year for the first 20 customers per tier &middot; <a href="/privacy" style="color: var(--accent-primary); text-decoration: underline;">Privacy</a></p>
 
-      <div class="hero-mockup-wrapper reveal">
-        <div class="hero-mockup-chrome">
-          <div class="hm-dot red"></div>
-          <div class="hm-dot yellow"></div>
-          <div class="hm-dot green"></div>
-        </div>
-        <div class="hero-mockup-body">
-          <div class="hm-sidebar">
-            <div style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.5px;">Aurora</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Workspaces</div>
-            <div style="padding: 0.6rem 0.75rem; background: rgba(76, 201, 240, 0.1); color: var(--accent-primary); border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Agency Suite</div>
-            <div style="padding: 0.6rem 0.75rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 500;">ClientPulse</div>
-            <div style="padding: 0.6rem 0.75rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 500;">ReForge</div>
+      <div class="hero-dual-wrapper reveal">
+        
+        <!-- Connection SVG (Backdrop) -->
+        <svg class="suite-connection" viewBox="0 0 1060 580" fill="none">
+          <!-- Gradient definition for the line -->
+          <defs>
+            <linearGradient id="connGrad" x1="460" y1="330" x2="700" y2="180" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#38e8c8" stop-opacity="0.2"/>
+              <stop offset="50%" stop-color="#fff" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#f0c84c" stop-opacity="0.2"/>
+            </linearGradient>
+            <!-- A thicker solid line behind for glow effect -->
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path d="M 460 330 C 560 330, 600 180, 700 180" stroke="url(#connGrad)" stroke-width="3" filter="url(#glow)" />
+          <path d="M 460 330 C 560 330, 600 180, 700 180" stroke="rgba(255,255,255,0.8)" stroke-width="1" />
+        </svg>
+
+        <!-- The moving dot along the path -->
+        <div class="connection-pulse"></div>
+
+        <!-- CLIENTPULSE MOCKUP (Left/Bottom) -->
+        <div class="dual-mockup mockup-cp">
+          <div class="hm-chrome">
+            <div class="hm-dot red"></div><div class="hm-dot yellow"></div><div class="hm-dot green"></div>
+            <div class="hm-chrome-title">clientpulse.helloaurora.ai</div>
           </div>
-          <div class="hm-main">
-            <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--text-primary); letter-spacing: -0.5px;">Agency Overview</div>
-            <div class="hm-cards">
-              <div class="hm-card">
-                <div style="color: var(--text-muted); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em;">Active Clients</div>
-                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--text-primary); font-weight: 600; line-height: 1;">24</div>
-              </div>
-              <div class="hm-card" style="border-color: rgba(56, 232, 200, 0.4); background: rgba(56, 232, 200, 0.05);">
-                <div style="color: var(--clientpulse-accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em;">At Risk (ClientPulse)</div>
-                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--text-primary); font-weight: 600; line-height: 1;">2</div>
-              </div>
-              <div class="hm-card" style="border-color: rgba(240, 200, 76, 0.25); background: rgba(240, 200, 76, 0.03);">
-                <div style="color: var(--reforge-accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em;">Content Velocity (ReForge)</div>
-                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--text-primary); font-weight: 600; line-height: 1;">+42%</div>
-              </div>
+          <div class="hm-body">
+            <div class="hm-sidebar">
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--clientpulse-accent); margin-bottom: 1rem;">ClientPulse</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500; padding: 0.4rem 0;">Synchronize</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500; padding: 0.4rem 0;">Analyze</div>
+              <div style="font-size: 0.8rem; color: var(--text-primary); font-weight: 600; padding: 0.4rem 0.6rem; background: rgba(56,232,200,0.1); border-radius: 6px;">Strategize</div>
             </div>
-            <div class="hm-content" style="padding: 1.5rem;">
-              <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--hairline); padding-bottom: 0.75rem; color: var(--text-primary);">Recent Activity</div>
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; border-bottom: 1px solid var(--hairline); font-size: 0.9rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--reforge-accent);"></div>
-                  <span style="color: var(--text-primary); font-weight: 500;">Acme Corp &mdash; Content Batch Approved</span>
+            <div class="hm-main">
+              <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary);">Monday Brief</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">3 plays recommended this week to protect MRR.</div>
+              
+              <div class="cp-row">
+                <div>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;">Zenith Fitness <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; margin-left: 0.5rem;">$2,400/mo</span></div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Health: 85/100 &mdash; Steady growth</div>
                 </div>
-                <span style="color: var(--reforge-accent); font-size: 0.8rem; font-weight: 500; padding: 0.25rem 0.5rem; background: rgba(240,200,76,0.1); border-radius: 4px;">Voice learning updated</span>
+                <div class="cp-btn" style="background: var(--bg-polar); border: 1px solid var(--hairline); color: var(--text-muted);">Upsell Candidate</div>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; border-bottom: 1px solid var(--hairline); font-size: 0.9rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--clientpulse-accent);"></div>
-                  <span style="color: var(--text-primary); font-weight: 500;">GlobalTech &mdash; Engagement Drop Detected</span>
+              
+              <div class="cp-row alert" style="position: relative; z-index: 5;" id="cp-anchor">
+                <div>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;">GlobalTech <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; margin-left: 0.5rem;">$5,000/mo</span></div>
+                  <div style="font-size: 0.75rem; color: var(--clientpulse-accent); font-weight: 500; margin-top: 0.2rem;">Health: 42/100 &mdash; 60% engagement drop</div>
                 </div>
-                <span style="color: var(--clientpulse-accent); font-size: 0.8rem; font-weight: 500; padding: 0.25rem 0.5rem; background: rgba(56,232,200,0.1); border-radius: 4px;">Play recommended</span>
+                <div class="cp-btn action">Generate Rescue Content &rarr;</div>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; font-size: 0.9rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted);"></div>
-                  <span style="color: var(--text-primary); font-weight: 500;">DesignCo &mdash; QBR Scheduled</span>
+              
+              <div class="cp-row">
+                <div>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem;">Acme Corp <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400; margin-left: 0.5rem;">$1,200/mo</span></div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Health: 92/100 &mdash; QBR just completed</div>
                 </div>
-                <span style="color: var(--text-muted); font-size: 0.8rem; font-weight: 500; padding: 0.25rem 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px;">Sync complete</span>
+                <div class="cp-btn" style="background: var(--bg-polar); border: 1px solid var(--hairline); color: var(--text-muted);">View Report</div>
               </div>
+
             </div>
           </div>
         </div>
+
+        <!-- REFORGE MOCKUP (Right/Top) -->
+        <div class="dual-mockup mockup-rf">
+          <div class="hm-chrome">
+            <div class="hm-dot red"></div><div class="hm-dot yellow"></div><div class="hm-dot green"></div>
+            <div class="hm-chrome-title">reforge.helloaurora.ai</div>
+          </div>
+          <div class="hm-body">
+            <div class="hm-sidebar">
+              <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--reforge-accent); margin-bottom: 1rem;">ReForge</div>
+              <div style="font-size: 0.8rem; color: var(--text-primary); font-weight: 600; padding: 0.4rem 0.6rem; background: rgba(240,200,76,0.1); border-radius: 6px;">Strategize</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500; padding: 0.4rem 0.6rem;">Execute</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500; padding: 0.4rem 0.6rem;">Compound</div>
+            </div>
+            <div class="hm-main">
+              <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center;">
+                Review Queue
+                <span style="font-size: 0.75rem; font-family: var(--font-mono); font-weight: 500; color: var(--reforge-accent); background: rgba(240,200,76,0.1); padding: 0.25rem 0.5rem; border-radius: 4px;">4 Awaiting</span>
+              </div>
+              
+              <div class="rf-grid">
+                <div class="rf-col">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">To Review</div>
+                  <div class="rf-item highlight" id="rf-anchor">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <span style="color: var(--reforge-accent); font-weight: 600;">GlobalTech</span>
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="color: #0A66C2;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </div>
+                    <div style="font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; line-height: 1.4;">New Feature Announcement</div>
+                    <div style="font-size: 0.7rem; color: var(--text-muted);">Generated from CP trigger to re-engage dormant users...</div>
+                  </div>
+                  <div class="rf-item">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <span style="color: var(--text-primary); font-weight: 500;">Acme Corp</span>
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"/></svg>
+                    </div>
+                    <div style="font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; line-height: 1.4;">Q3 Insights Thread</div>
+                  </div>
+                </div>
+                <div class="rf-col">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Approved</div>
+                  <div class="rf-item" style="opacity: 0.6;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                      <span style="color: var(--text-primary); font-weight: 500;">Zenith Fitness</span>
+                    </div>
+                    <div style="font-weight: 500; color: var(--text-primary); line-height: 1.4;">Workout Routine PDF</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
