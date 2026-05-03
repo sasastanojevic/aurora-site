@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Suite — Two products that talk to each other | helloaurora.ai</title>
+  <meta name="description" content="The Aurora Suite is the only place ReForge and ClientPulse share data. Content velocity becomes a leading churn indicator no standalone CS product can offer. $999/mo · agency-priced MCP-native suite for 8–15 person growth agencies.">
+  <meta property="og:title" content="Aurora Suite — Two products that talk to each other.">
+  <meta property="og:description" content="ReForge publishes content events. ClientPulse consumes them as a privileged signal alongside Stripe, meetings, and email. A 30-day head start on every retention risk no standalone CS product can offer.">
+  <meta property="og:url" content="https://helloaurora.ai/suite">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aurora">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aurora Suite — The signal pipeline.">
+  <meta name="twitter:description" content="Content velocity as a leading churn indicator. The only suite where a content product and a client-health product share data.">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.bunny.net/css?family=playfair-display:400,500,600,700|outfit:300,400,500,600,700|jetbrains-mono:400,500&display=swap">
+  <style>
+    :root {
+      --aurora-gradient: linear-gradient(135deg, #38e8c8, #4cc9f0, #7b8ff0, #b388eb, #e87fa5);
+      --aurora-gradient-h: linear-gradient(90deg, #38e8c8, #4cc9f0, #7b8ff0, #b388eb, #e87fa5);
+      --bg-deep: #06090f;
+      --bg-polar: #0c1220;
+      --bg-twilight: #141e33;
+      --bg-surface: #1a2540;
+      --text-primary: #e8ecf5;
+      --text-muted: #7a88a8;
+      --accent-primary: #4cc9f0;
+      --accent-secondary: #b388eb;
+      --accent-tertiary: #38e8c8;
+      --reforge-accent: #f0c84c;
+      --clientpulse-accent: #38e8c8;
+      --hairline: rgba(255, 255, 255, 0.08);
+      --hairline-strong: rgba(255, 255, 255, 0.12);
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); line-height: 1.7; font-weight: 400; overflow-x: hidden; }
+
+    /* ── Pre-launch banner ── */
+    .pre-launch-banner { background: linear-gradient(90deg, rgba(56,232,200,0.16), rgba(76,201,240,0.16)); border-bottom: 1px solid rgba(56,232,200,0.3); padding: 0.55rem 1.5rem; text-align: center; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.2px; line-height: 1.4; }
+    .pre-launch-banner strong { color: var(--accent-tertiary); font-weight: 700; }
+    .pre-launch-banner a { color: var(--accent-tertiary); text-decoration: none; border-bottom: 1px solid rgba(56,232,200,0.4); }
+    .pre-launch-banner a:hover { border-bottom-color: var(--accent-tertiary); }
+
+    /* ── Nav ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(6, 9, 15, 0.82); border-bottom: 1px solid rgba(76, 201, 240, 0.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.25s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.is-active { color: var(--text-primary); }
+    .nav-cta { padding: 14px 32px !important; background: var(--aurora-gradient) !important; -webkit-text-fill-color: var(--bg-deep) !important; color: var(--bg-deep) !important; border-radius: 10px; font-weight: 600 !important; font-size: 0.95rem !important; transition: opacity 0.25s !important; }
+    .nav-cta:hover { opacity: 0.88; }
+    nav::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--aurora-gradient-h); opacity: 0.5; }
+
+    /* ── Hero ── */
+    .hero { min-height: 92vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 9rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 1100px; height: 1100px; background: radial-gradient(ellipse, rgba(76, 201, 240, 0.10) 0%, rgba(179, 136, 235, 0.07) 35%, rgba(232, 127, 165, 0.04) 55%, transparent 70%); pointer-events: none; animation: hero-glow 9s ease-in-out infinite alternate; }
+    @keyframes hero-glow { 0% { opacity: 0.7; transform: translateX(-50%) scale(1); } 100% { opacity: 1; transform: translateX(-50%) scale(1.08); } }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to top, var(--bg-deep), transparent); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: 880px; }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 5.8vw, 4.4rem); line-height: 1.1; margin-bottom: 1.75rem; letter-spacing: -0.5px; }
+    .hero h1 .gradient-text { background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p.hero-sub-head { font-size: 1.08rem; color: var(--text-muted); max-width: 720px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.75; }
+    .hero p.hero-sub-head strong { color: var(--text-primary); font-weight: 500; }
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; max-width: 560px; margin: 0 auto; flex-wrap: wrap; }
+    .hero-btn-primary, .hero-btn-secondary { padding: 14px 32px; border-radius: 10px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: opacity 0.25s, transform 0.2s; white-space: nowrap; display: inline-block; }
+    .hero-btn-primary { background: var(--aurora-gradient); color: var(--bg-deep) !important; }
+    .hero-btn-secondary { background: rgba(76, 201, 240, 0.08); color: var(--accent-primary); border: 1px solid rgba(76, 201, 240, 0.2); }
+    .hero-btn-primary:hover, .hero-btn-secondary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hero-fine { margin-top: 1.4rem; font-size: 0.8rem; color: var(--text-muted); opacity: 0.7; line-height: 1.6; }
+    .hero-fine code { font-family: var(--font-mono); font-size: 0.92em; background: rgba(76,201,240,0.08); padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--accent-tertiary); }
+
+    /* ── Section shared ── */
+    section { padding: 7rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-primary); margin-bottom: 1rem; }
+    .section-label.gradient { background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; line-height: 1.15; }
+    .section-title .gradient-text { background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 720px; font-weight: 300; margin-bottom: 3rem; line-height: 1.75; }
+    .section-desc-center { text-align: center; margin-left: auto; margin-right: auto; }
+    .section-head-center { text-align: center; margin-bottom: 3.5rem; }
+
+    /* ── Pipeline (Section 2) ── */
+    #pipeline { background: var(--bg-polar); position: relative; overflow: hidden; }
+    #pipeline::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1100px; height: 900px; background: radial-gradient(ellipse, rgba(76,201,240,0.04) 0%, transparent 60%); pointer-events: none; }
+    .pipeline-grid { display: grid; grid-template-columns: 1fr 0.7fr 1fr; gap: 1.25rem; align-items: stretch; position: relative; z-index: 1; }
+    .pipe-card { background: var(--bg-twilight); border: 1px solid var(--hairline); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .pipe-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .pipe-card.rf::before { background: var(--reforge-accent); }
+    .pipe-card.cp::before { background: var(--clientpulse-accent); }
+    .pipe-card.bridge { background: var(--bg-polar); border-style: dashed; border-color: rgba(76,201,240,0.18); }
+    .pipe-card.bridge::before { background: var(--aurora-gradient-h); height: 2px; opacity: 0.6; }
+    .pipe-head { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; margin-bottom: 0.4rem; }
+    .pipe-card.rf .pipe-head { color: var(--reforge-accent); }
+    .pipe-card.cp .pipe-head { color: var(--clientpulse-accent); }
+    .pipe-card.bridge .pipe-head { color: var(--text-primary); justify-content: center; }
+    .pipe-sub { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; margin-bottom: 1.4rem; line-height: 1.5; }
+    .pipe-card.bridge .pipe-sub { text-align: center; }
+    .pipe-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+    .pipe-list li { font-size: 0.82rem; color: var(--text-primary); font-weight: 400; padding: 0.55rem 0.8rem; background: var(--bg-surface); border: 1px solid var(--hairline); border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; line-height: 1.4; }
+    .pipe-card.rf .pipe-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--reforge-accent); flex-shrink: 0; }
+    .pipe-card.cp .pipe-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--clientpulse-accent); flex-shrink: 0; }
+    .pipe-card.bridge .pipe-list { gap: 0.45rem; align-items: center; }
+    .pipe-card.bridge .pipe-list li { background: transparent; border: 1px dashed rgba(76,201,240,0.2); color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; justify-content: center; text-align: center; }
+    .pipe-arrow { display: none; }
+    .pipeline-note { margin-top: 2.5rem; padding: 1.75rem 2rem; background: linear-gradient(135deg, rgba(56,232,200,0.04), rgba(232,127,165,0.04)); border: 1px solid var(--hairline); border-radius: 14px; color: var(--text-muted); font-size: 0.95rem; font-weight: 300; line-height: 1.75; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .pipeline-note strong { color: var(--text-primary); font-weight: 500; }
+    @media (max-width: 900px) {
+      .pipeline-grid { grid-template-columns: 1fr; }
+      .pipe-card.bridge { order: 2; }
+    }
+
+    /* ── Audience (Section 3) ── */
+    #audience { background: var(--bg-deep); }
+    .audience-hero { background: linear-gradient(135deg, rgba(56,232,200,0.05), rgba(76,201,240,0.05), rgba(179,136,235,0.05)); border: 1px solid rgba(76,201,240,0.12); border-radius: 18px; padding: 2.75rem; position: relative; overflow: hidden; }
+    .audience-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--aurora-gradient-h); }
+    .audience-hero .ah-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; padding: 0.3rem 0.8rem; border-radius: 20px; background: rgba(76,201,240,0.1); color: var(--accent-primary); margin-bottom: 1rem; }
+    .audience-hero h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem; line-height: 1.3; }
+    .audience-hero p { color: var(--text-primary); font-size: 1rem; font-weight: 300; line-height: 1.8; max-width: 820px; }
+    .audience-hero p strong { color: var(--text-primary); font-weight: 500; }
+    .audience-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    .audience-item { background: var(--bg-polar); border: 1px solid var(--hairline); border-radius: 14px; padding: 1.6rem; transition: border-color 0.3s; }
+    .audience-item:hover { border-color: rgba(76,201,240,0.2); }
+    .audience-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .audience-item .ai-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+    .audience-item p { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.65; }
+    @media (max-width: 768px) { .audience-secondary { grid-template-columns: 1fr; } }
+
+    /* ── Killer demo (Section 4) ── */
+    #killer-demo { background: var(--bg-polar); position: relative; overflow: hidden; }
+    #killer-demo::before { content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(ellipse, rgba(232,127,165,0.05) 0%, rgba(76,201,240,0.04) 40%, transparent 70%); pointer-events: none; }
+    .killer-card { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; text-align: center; padding: 3rem 2.5rem; background: var(--bg-twilight); border: 1px solid rgba(76,201,240,0.12); border-radius: 18px; }
+    .killer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--aurora-gradient-h); border-radius: 18px 18px 0 0; }
+    .killer-card h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 1.5rem; line-height: 1.25; }
+    .killer-card .killer-body { color: var(--text-muted); font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .killer-card .killer-body strong { color: var(--text-primary); font-weight: 500; }
+    .killer-cta-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .killer-capacity { margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.5px; opacity: 0.85; }
+
+    /* ── Pricing (Section 5) ── */
+    #pricing-suite { background: var(--bg-deep); }
+    .suite-card { background: linear-gradient(135deg, rgba(56,232,200,0.04), rgba(76,201,240,0.04), rgba(232,127,165,0.04)); border: 1px solid rgba(76,201,240,0.15); border-radius: 18px; padding: 3rem; position: relative; overflow: hidden; max-width: 880px; margin: 0 auto; }
+    .suite-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--aurora-gradient-h); }
+    .suite-card-head { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 2rem; }
+    .suite-card-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; padding: 0.3rem 0.85rem; border-radius: 20px; background: rgba(76,201,240,0.12); color: var(--accent-primary); margin-bottom: 1rem; }
+    .suite-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 2rem; margin-bottom: 0.5rem; }
+    .suite-card .suite-tagline { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; max-width: 600px; }
+    .suite-price-row { display: flex; gap: 2.5rem; justify-content: center; align-items: flex-end; margin: 1.5rem 0 1.25rem; flex-wrap: wrap; }
+    .suite-price { text-align: center; }
+    .suite-price .sp-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.25rem; }
+    .suite-price .sp-amount { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; }
+    .suite-price .sp-period { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
+    .suite-price.annual .sp-amount { background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .suite-price.annual .sp-save { font-size: 0.78rem; color: var(--accent-tertiary); font-weight: 600; margin-top: 0.3rem; }
+    .suite-includes { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; margin: 1.5rem 0; padding: 1.5rem; background: rgba(6,9,15,0.4); border: 1px solid var(--hairline); border-radius: 12px; }
+    .suite-includes li { font-size: 0.88rem; color: var(--text-primary); font-weight: 400; padding-left: 1.4rem; position: relative; line-height: 1.5; }
+    .suite-includes li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-tertiary); }
+    .suite-includes li strong { font-weight: 500; }
+    .suite-ea { background: linear-gradient(135deg, rgba(56,232,200,0.08), rgba(76,201,240,0.06)); border: 1px solid rgba(56,232,200,0.2); border-radius: 12px; padding: 1.4rem 1.5rem; margin: 1rem 0 1.75rem; text-align: center; font-size: 0.92rem; color: var(--text-primary); font-weight: 400; line-height: 1.6; }
+    .suite-ea strong { color: var(--accent-tertiary); font-weight: 600; }
+    .suite-ea code { font-family: var(--font-mono); font-size: 0.92em; background: rgba(6,9,15,0.5); padding: 0.18rem 0.55rem; border-radius: 4px; color: var(--accent-tertiary); border: 1px solid rgba(56,232,200,0.2); }
+    .suite-ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .suite-cta { padding: 14px 32px; border-radius: 10px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: opacity 0.25s, transform 0.2s; display: inline-block; }
+    .suite-cta.primary { background: var(--aurora-gradient); color: var(--bg-deep); }
+    .suite-cta.secondary { background: rgba(76,201,240,0.08); color: var(--accent-primary); border: 1px solid rgba(76,201,240,0.2); }
+    .suite-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .suite-foot { margin-top: 1.5rem; font-size: 0.78rem; color: var(--text-muted); opacity: 0.7; text-align: center; line-height: 1.6; }
+    .suite-foot a { color: var(--accent-primary); text-decoration: none; border-bottom: 1px solid rgba(76,201,240,0.3); }
+    @media (max-width: 768px) { .suite-includes { grid-template-columns: 1fr; } }
+
+    /* ── FAQ (Section 6) ── */
+    #faq { background: var(--bg-polar); }
+    .faq-list { max-width: 760px; margin: 2rem auto 0; }
+    .faq-item { background: var(--bg-twilight); border: 1px solid rgba(76, 201, 240, 0.06); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; transition: border-color 0.3s; }
+    .faq-item:hover { border-color: rgba(76, 201, 240, 0.12); }
+    .faq-item summary { padding: 1.25rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--accent-primary); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item p { padding: 0 1.5rem 1.3rem; font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
+    .faq-item p code { font-family: var(--font-mono); font-size: 0.92em; background: rgba(76,201,240,0.08); padding: 0.1rem 0.4rem; border-radius: 4px; color: var(--accent-tertiary); }
+    .faq-item p a { color: var(--accent-primary); text-decoration: none; border-bottom: 1px solid rgba(76,201,240,0.4); }
+
+    /* ── Bottom CTA (Section 7) ── */
+    #bottom-cta { background: var(--bg-deep); text-align: center; padding: 6.5rem 2rem; position: relative; overflow: hidden; }
+    #bottom-cta::before { content: ''; position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(ellipse, rgba(76, 201, 240, 0.06) 0%, rgba(179, 136, 235, 0.04) 40%, transparent 70%); pointer-events: none; }
+    #bottom-cta .section-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    #bottom-cta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; line-height: 1.2; }
+    #bottom-cta p { color: var(--text-muted); font-size: 1.02rem; font-weight: 300; max-width: 580px; margin: 0 auto 2rem; line-height: 1.75; }
+    #bottom-cta .bottom-capacity { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-top: 1.5rem; opacity: 0.75; letter-spacing: 0.5px; }
+
+    /* ── Footer ── */
+    footer { position: relative; padding: 3rem 2rem 2rem; text-align: center; background: var(--bg-deep); }
+    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--aurora-gradient-h); opacity: 0.4; }
+    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.2rem 0; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.25s; }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); opacity: 0.5; margin-top: 1rem; }
+
+    /* ── Animations ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Mobile nav ── */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); margin: 5px 0; transition: all 0.3s; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: rgba(6, 9, 15, 0.96); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid rgba(76, 201, 240, 0.08); }
+      .nav-links.open { display: flex; }
+      .hero h1 { font-size: 2.2rem; }
+      .footer-links { flex-direction: column; gap: 0.8rem; }
+      .suite-card { padding: 2rem 1.5rem; }
+      .killer-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="pre-launch-banner">
+      <strong>Private launch &middot; Summer 2026.</strong>
+      Try the live demo today; paid signups open after our German company registration completes.
+    </div>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Aurora</a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="/#workflow">Workflow</a>
+        <a href="/#products">Products</a>
+        <a href="/suite" class="is-active">Suite</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="nav-cta">Try the demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">The Agency Suite &middot; RF + CP + signal pipeline</p>
+      <h1>Two products that talk to each other.<br><span class="gradient-text">Content velocity becomes a leading churn indicator.</span></h1>
+      <p class="hero-sub-head">Most agencies use a content product AND a client-health product. The Aurora Suite is the only place they share data. <strong>ReForge</strong> publishes content events &mdash; velocity, channel diversity, voice freshness, engagement delta. <strong>ClientPulse</strong> consumes them as a privileged signal alongside Stripe, meeting recordings, and email patterns. A 30-day head start on every retention risk no standalone CS product can offer.</p>
+
+      <div class="hero-actions">
+        <a href="https://calendly.com/sasa-aurora/suite-demo" class="hero-btn-primary" target="_blank" rel="noopener">Book a 30-min Suite demo &rarr;</a>
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="hero-btn-secondary">Try the live demo</a>
+      </div>
+      <p class="hero-fine">$999/mo &middot; First 20 customers get 30% off for 12 months (<code>EA-SUITE-30</code>) &middot; Stripe enforces the cap automatically</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: SIGNAL PIPELINE -->
+  <section id="pipeline">
+    <div class="section-inner">
+      <div class="section-head-center reveal">
+        <p class="section-label gradient">The signal pipeline</p>
+        <h2 class="section-title">The differentiator in <span class="gradient-text">one diagram</span>.</h2>
+        <p class="section-desc section-desc-center">Single-product CS platforms (Vitally, ChurnZero, Planhat) have client data but no content engine. Single-product content products (Jasper, Copy.ai, OpusClip) have content but no client roster. The Suite is the only place these two facts meet.</p>
+      </div>
+
+      <div class="pipeline-grid reveal">
+        <div class="pipe-card rf">
+          <div class="pipe-head">
+            <svg width="22" height="22" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="8" y1="36" x2="24" y2="36" stroke="#f0c84c" stroke-width="2.5" stroke-linecap="round"/><polyline points="20,32 24,36 20,40" stroke="#f0c84c" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 36 L36 22 L44 36 L36 50 Z" fill="none" stroke="#f0c84c" stroke-width="2.5" stroke-linejoin="round"/><path d="M32 36 L36 28 L40 36 L36 44 Z" fill="#f0c84c" opacity="0.15"/><line x1="44" y1="28" x2="62" y2="16" stroke="#f0c84c" stroke-width="2" stroke-linecap="round"/><line x1="44" y1="36" x2="64" y2="36" stroke="#f0c84c" stroke-width="2.5" stroke-linecap="round"/><line x1="44" y1="44" x2="62" y2="56" stroke="#f0c84c" stroke-width="2" stroke-linecap="round"/><circle cx="64" cy="36" r="2.5" fill="#f0c84c"/></svg>
+            ReForge publishes
+          </div>
+          <p class="pipe-sub">Seven content events stream out of the publishing engine, per client, in real time.</p>
+          <ul class="pipe-list">
+            <li>Content velocity per client</li>
+            <li>Channel diversity</li>
+            <li>Voice freshness</li>
+            <li>Pause / resume patterns</li>
+            <li>Topic shift detection</li>
+            <li>Engagement delta</li>
+            <li>Approval-cycle latency</li>
+          </ul>
+        </div>
+
+        <div class="pipe-card bridge">
+          <div class="pipe-head">The pipeline</div>
+          <p class="pipe-sub">Looks identical to any MCP integration in CP. Greyed-out for non-Suite customers &mdash; built-in upsell.</p>
+          <ul class="pipe-list">
+            <li>events.publish &rarr;</li>
+            <li>signal.normalize &rarr;</li>
+            <li>cp.consume &rarr;</li>
+            <li>health.recompute</li>
+          </ul>
+        </div>
+
+        <div class="pipe-card cp">
+          <div class="pipe-head">
+            <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="url(#cpGradPipe)"/><polyline points="7,20 13,20 16,12 20,28 24,12 27,20 33,20" stroke="#06090f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><defs><linearGradient id="cpGradPipe" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#38e8c8"/><stop offset="100%" stop-color="#4cc9f0"/></linearGradient></defs></svg>
+            ClientPulse consumes
+          </div>
+          <p class="pipe-sub">Content velocity becomes a leading retention signal alongside Stripe, meetings, email, and calendar.</p>
+          <ul class="pipe-list">
+            <li>Stripe payment patterns</li>
+            <li>Meeting recordings &amp; attendance</li>
+            <li>Email response velocity</li>
+            <li>Calendar density</li>
+            <li><strong>+ ReForge content velocity</strong></li>
+            <li><strong>+ Voice freshness drift</strong></li>
+            <li><strong>+ Channel diversity drop</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pipeline-note reveal">
+        Single-product CS platforms (Vitally, ChurnZero, Planhat) have client data but no content engine. Single-product content products (Jasper, Copy.ai, OpusClip) have content but no client roster. <strong>The Suite is the only place these two facts meet.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: WHO IT'S FOR -->
+  <section id="audience">
+    <div class="section-inner">
+      <div class="section-head-center reveal">
+        <p class="section-label">Who it's for</p>
+        <h2 class="section-title">Built for the <span class="gradient-text">multi-service growth agency</span>.</h2>
+        <p class="section-desc section-desc-center">Highest Suite willingness-to-pay per our ICP research. The Suite signal pipeline is the upgrade path that skips Pro entirely.</p>
+      </div>
+
+      <div class="audience-hero reveal">
+        <span class="ah-tag">Primary ICP</span>
+        <h3>Multi-service growth agency &mdash; 8&ndash;15 people, 12&ndash;30 clients</h3>
+        <p>Your CFO just asked <strong>"why did Acme churn?"</strong> and you couldn't answer. You have HubSpot for content tracking, Productive for projects, Buffer for social, and a churn spreadsheet your account manager updates twice a quarter. The Suite replaces the churn spreadsheet with a leading indicator no other product can give you, because no other product has both halves of the data.</p>
+      </div>
+
+      <div class="audience-secondary reveal">
+        <div class="audience-item">
+          <h4>Boutique content / SEO agency</h4>
+          <p class="ai-meta">3&ndash;7 people &middot; 8&ndash;20 clients</p>
+          <p>Already paying $1,200+/mo per client for a ghostwriter. The Suite pays itself off the moment you save one $2K/mo client from churning &mdash; because ClientPulse saw the engagement delta drop 30 days before the renewal call.</p>
+        </div>
+        <div class="audience-item">
+          <h4>Vertical agency</h4>
+          <p class="ai-meta">Legal-tech &middot; B2B SaaS &middot; fitness &middot; wealth</p>
+          <p>Per-client voice profiles + the signal pipeline. Each vertical has different content cadence patterns. The Suite learns yours per client &mdash; and surfaces the deviation as a retention signal before the client tells you something's wrong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: KILLER DEMO CTA -->
+  <section id="killer-demo">
+    <div class="killer-card reveal">
+      <h2>Want to see the Suite signal pipeline on your data?</h2>
+      <p class="killer-body">Founder-led 30-min demo. Connect your Stripe live (read-only). We'll show you which of your current clients is at risk this week &mdash; by content velocity dropping, payment patterns shifting, or meeting attendance falling &mdash; and the recommended next move per client. <strong>If we don't surface anything dramatic, we tell you that honestly.</strong> No theater.</p>
+      <div class="killer-cta-row">
+        <a href="https://calendly.com/sasa-aurora/suite-demo" class="hero-btn-primary" target="_blank" rel="noopener">Book the demo &rarr;</a>
+      </div>
+      <p class="killer-capacity">Tue/Thu 16:00&ndash;19:00 CET &middot; 4 slots/week max &middot; Founder-led, no SDR layer</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: PRICING -->
+  <section id="pricing-suite">
+    <div class="section-inner">
+      <div class="section-head-center reveal">
+        <p class="section-label gradient">Pricing</p>
+        <h2 class="section-title">One subscription. <span class="gradient-text">Both products. Plus the pipeline.</span></h2>
+        <p class="section-desc section-desc-center">If you only need ReForge or only ClientPulse, see the <a href="/#pricing" style="color: var(--accent-primary); border-bottom: 1px solid rgba(76,201,240,0.3); text-decoration: none;">full pricing table</a>. The Suite is for agencies that need both halves of the data.</p>
+      </div>
+
+      <div class="suite-card reveal">
+        <div class="suite-card-head">
+          <span class="suite-card-tag">Aurora Agency Suite</span>
+          <h3>Suite</h3>
+          <p class="suite-tagline">ReForge Agency + ClientPulse Agency + the content-velocity signal pipeline.</p>
+        </div>
+
+        <div class="suite-price-row">
+          <div class="suite-price">
+            <p class="sp-label">Monthly</p>
+            <p class="sp-amount">$999</p>
+            <p class="sp-period">/month</p>
+          </div>
+          <div class="suite-price annual">
+            <p class="sp-label">Annual</p>
+            <p class="sp-amount">$9,990</p>
+            <p class="sp-period">/year</p>
+            <p class="sp-save">16.7% off &middot; 2 months free</p>
+          </div>
+        </div>
+
+        <ul class="suite-includes">
+          <li><strong>ReForge Agency</strong> &mdash; 5 seats, full publishing engine</li>
+          <li><strong>ClientPulse Agency</strong> &mdash; 8 seats, full retention dashboard</li>
+          <li><strong>Content-velocity signal pipeline</strong> (the Suite-only differentiator)</li>
+          <li>Same team accesses both products with one login</li>
+          <li>All MCP servers, all models, full API on both products</li>
+          <li>On-device deployment (post-launch)</li>
+          <li>36-month data retention (CP)</li>
+          <li>500 pieces/mo at $2/piece overage (RF)</li>
+        </ul>
+
+        <div class="suite-ea">
+          <strong>Early Adopter:</strong> 30% off &times; 12 months for the first 20 customers &mdash; redeem at checkout with <code>EA-SUITE-30</code>. Stripe enforces the cap automatically. Year 2+ full price.
+        </div>
+
+        <div class="suite-ctas">
+          <a href="https://calendly.com/sasa-aurora/suite-demo" class="suite-cta primary" target="_blank" rel="noopener">Book a Suite demo &rarr;</a>
+          <a href="https://reforge.helloaurora.ai/api/demo/signin" class="suite-cta secondary">Try the live demo</a>
+        </div>
+
+        <p class="suite-foot">
+          Need more seats than the Agency cap? Enterprise removes the seat cap &mdash; <a href="mailto:hello@helloaurora.ai?subject=Aurora%20Suite%20Enterprise%20inquiry">hello@helloaurora.ai</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="section-head-center reveal">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">Suite-specific questions.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Is the Suite really cheaper than buying RF Agency + CP Agency separately?</summary>
+          <p>Yes &mdash; $999/mo vs. $599 + $799 = $1,398 stacked. But the actual reason the Suite exists is the signal pipeline, not the discount. ReForge publishes seven content events into ClientPulse as a privileged signal. Content velocity per client becomes a leading churn indicator no standalone CS product can offer. That's the feature you're paying for. The bundle math is a side effect.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When does the signal pipeline activate?</summary>
+          <p>Launch+30 to launch+45. Both products go live on launch day; the pipeline (RF events streaming into CP via the privileged connector) switches on once the first cohort of Suite customers has enough content history for the signals to stabilise. You'll be notified the day it activates on your account.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if we only need ReForge or only ClientPulse?</summary>
+          <p>Then don't buy the Suite. Both products work standalone. ReForge Agency is $599/mo, ClientPulse Agency is $799/mo, and you can see the full pricing table on the <a href="/#pricing">main pricing page</a>. The Suite is specifically for agencies that need both halves of the data &mdash; and want the content-velocity signal feeding their retention dashboard.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can we add more seats?</summary>
+          <p>Agency tier seats (5 RF + 8 CP) are the cap. Enterprise removes the seat cap and adds custom data retention plus a dedicated success contact. Drop a note to <a href="mailto:hello@helloaurora.ai?subject=Aurora%20Suite%20Enterprise%20inquiry">hello@helloaurora.ai</a> with your team size and we'll send pricing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the EA discount really?</summary>
+          <p>30% off for 12 months on the Suite tier, for the first 20 customers only. Redeem with <code>EA-SUITE-30</code> at checkout. Stripe enforces the cap automatically &mdash; once 20 redemptions land, the coupon stops working. Year 2 onward bills at full $999/mo. Early Adopters also get direct access to Sasa (the founder) and influence over the roadmap.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: BOTTOM CTA -->
+  <section id="bottom-cta">
+    <div class="section-inner reveal">
+      <h2>See the pipeline on your data.</h2>
+      <p>30-min founder-led demo. Connect your Stripe live, read-only. Walk away with a ranked list of which clients are at risk this week and what to do about each one &mdash; whether or not you ever subscribe.</p>
+      <div class="killer-cta-row">
+        <a href="https://calendly.com/sasa-aurora/suite-demo" class="hero-btn-primary" target="_blank" rel="noopener">Book the Suite demo &rarr;</a>
+        <a href="https://reforge.helloaurora.ai/api/demo/signin" class="hero-btn-secondary">Try the live demo</a>
+      </div>
+      <p class="bottom-capacity">Tue/Thu 16:00&ndash;19:00 CET &middot; 4 slots/week max &middot; Founder-led, no SDR layer</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Aurora</div>
+    <div class="footer-links">
+      <a href="/#products">Products</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/suite">Suite</a>
+      <a href="/#story">Our Story</a>
+      <a href="mailto:hello@helloaurora.ai">Contact</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/dpa">DPA</a>
+      <a href="/refund">Refund Policy</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Aurora AI Solutions Studio &mdash; helloaurora.ai</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.06}s`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
