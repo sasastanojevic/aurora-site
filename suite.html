@@ -203,7 +203,8 @@
     /* ── Footer ── */
     footer { position: relative; padding: 3rem 2rem 2rem; text-align: center; background: var(--bg-deep); }
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--aurora-gradient-h); opacity: 0.4; }
-    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; background: var(--aurora-gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; color: #FFFFFF; }
+    .footer-brand img { height: 24px; width: 24px; border-radius: 50%; box-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
     .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.2rem 0; flex-wrap: wrap; }
     .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.25s; }
     .footer-links a:hover { color: var(--text-primary); }
@@ -606,7 +607,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">Aurora</div>
+    <div class="footer-brand"><img src="/favicon.png" alt="Aurora Logo">Aurora</div>
     <div class="footer-links">
       <a href="#products">Products</a>
       <a href="#pricing">Pricing</a>
