@@ -419,7 +419,8 @@
     .hero h1 .word { display: inline-block; white-space: nowrap; }
     .hero h1 .char { display: inline-block; opacity: 0; transform: translateY(0.4em); animation: charIn 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
     @keyframes charIn { to { opacity: 1; transform: translateY(0); } }
-    .hero h1 .gradient-text { position: relative; display: inline-block; padding-bottom: 12px; }
+    .hero h1 .gradient-text { position: relative; display: inline-block; padding-bottom: 12px; opacity: 0; animation: gradientFade 0.7s ease 1.2s forwards; }
+    @keyframes gradientFade { to { opacity: 1; } }
     .hero h1 .gradient-text svg.aurora-underline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 14px; pointer-events: none; overflow: visible; }
     /* Underline draws once on load and stays — no looping disappearance */
     .hero h1 .gradient-text svg.aurora-underline path { fill: none; stroke: url(#auroraStroke); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 360; stroke-dashoffset: 360; opacity: 0; animation: trace 1.8s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards; }
@@ -467,22 +468,23 @@
     #loop-proof .suite-connection .conn-glow { stroke: url(#connGrad); stroke-width: 3; fill: none; filter: url(#connGlow); stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.6s ease; opacity: 0; animation: none; }
     #loop-proof .suite-connection .conn-line { stroke: rgba(255,255,255,0.85); stroke-width: 1; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.6s ease; opacity: 0; animation: none; }
     #loop-proof .suite-connection path { stroke-dasharray: 600; animation: none; }
-    .proof-stage.play .suite-connection .conn-glow,
-    .proof-stage.play .suite-connection .conn-line { stroke-dashoffset: 0; opacity: 1; }
+    /* Override needs #loop-proof prefix to beat the base rule's ID specificity */
+    #loop-proof .proof-stage.play .suite-connection .conn-glow,
+    #loop-proof .proof-stage.play .suite-connection .conn-line { stroke-dashoffset: 0; opacity: 1; }
     #loop-proof .connection-pulse { animation: none; opacity: 0; }
-    .proof-stage.play .connection-pulse { animation: followPathOnce 1.6s cubic-bezier(0.4, 0, 0.2, 1) 2.6s forwards; }
+    #loop-proof .proof-stage.play .connection-pulse { animation: followPathOnce 1.6s cubic-bezier(0.4, 0, 0.2, 1) 2.6s forwards; }
     @keyframes followPathOnce {
       0%   { offset-distance: 0%;   opacity: 0; }
       10%  { opacity: 1; }
       85%  { opacity: 1; }
       100% { offset-distance: 100%; opacity: 0; }
     }
-    .proof-stage.play .cp-row.alert { animation: cpAlertPulse 0.9s ease-in-out 0.2s 3 both; }
+    #loop-proof .proof-stage.play .cp-row.alert { animation: cpAlertPulse 0.9s ease-in-out 0.2s 3 both; }
     @keyframes cpAlertPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(56, 232, 200, 0); border-color: rgba(56, 232, 200, 0.4); }
       50%      { box-shadow: 0 0 0 6px rgba(56, 232, 200, 0.18); border-color: rgba(56, 232, 200, 0.85); }
     }
-    .proof-stage.play .rf-item.highlight { animation: rfArrive 0.8s ease 4.0s forwards; }
+    #loop-proof .proof-stage.play .rf-item.highlight { animation: rfArrive 0.8s ease 4.0s forwards; }
     @keyframes rfArrive {
       0%   { opacity: 0.55; transform: scale(1); border-color: rgba(176,38,255,0.4); box-shadow: 0 0 0 0 rgba(176,38,255,0); }
       40%  { opacity: 1;    transform: scale(1.025); border-color: rgba(176,38,255,1); box-shadow: 0 0 24px 4px rgba(176,38,255,0.5); }
@@ -513,8 +515,8 @@
       .proof-stage { opacity: 1; transform: none; transition: none; }
       #loop-proof .suite-connection .conn-glow, #loop-proof .suite-connection .conn-line { stroke-dashoffset: 0 !important; opacity: 1 !important; transition: none !important; }
       #loop-proof .connection-pulse { display: none; }
-      .proof-stage.play .cp-row.alert,
-      .proof-stage.play .rf-item.highlight { animation: none; }
+      #loop-proof .proof-stage.play .cp-row.alert,
+      #loop-proof .proof-stage.play .rf-item.highlight { animation: none; }
       #loop-proof .rf-item.highlight { opacity: 1; }
     }
 
@@ -1440,7 +1442,12 @@
       if (!h1) return;
       var charCount = 0;
       function wrap(node) {
-        if (node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'svg') return;
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          // Skip the underline SVG and the gradient-text span (its background-clip:text
+          // doesn't paint through display:inline-block char children — text disappears).
+          if (node.tagName.toLowerCase() === 'svg') return;
+          if (node.classList && node.classList.contains('gradient-text')) return;
+        }
         if (node.nodeType === Node.TEXT_NODE) {
           var frag = document.createDocumentFragment();
           var parts = node.textContent.split(/(\s+)/);
