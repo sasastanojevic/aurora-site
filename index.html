@@ -421,14 +421,12 @@
     @keyframes charIn { to { opacity: 1; transform: translateY(0); } }
     .hero h1 .gradient-text { position: relative; display: inline-block; padding-bottom: 12px; }
     .hero h1 .gradient-text svg.aurora-underline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 14px; pointer-events: none; overflow: visible; }
-    .hero h1 .gradient-text svg.aurora-underline path { fill: none; stroke: url(#auroraStroke); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 360; stroke-dashoffset: 360; animation: trace 5s ease-in-out infinite 1.6s; }
+    /* Underline draws once on load and stays — no looping disappearance */
+    .hero h1 .gradient-text svg.aurora-underline path { fill: none; stroke: url(#auroraStroke); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 360; stroke-dashoffset: 360; opacity: 0; animation: trace 1.8s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards; }
     @keyframes trace {
       0%   { stroke-dashoffset: 360; opacity: 0; }
-      8%   { opacity: 1; }
-      45%  { stroke-dashoffset: 0;   opacity: 1; }
-      55%  { stroke-dashoffset: 0;   opacity: 1; }
-      92%  { stroke-dashoffset: -360; opacity: 0.6; }
-      100% { stroke-dashoffset: -360; opacity: 0; }
+      10%  { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 1; }
     }
 
     /* Workflow — replace horizontal rail with a real oval loop */
@@ -519,6 +517,19 @@
       .proof-stage.play .rf-item.highlight { animation: none; }
       #loop-proof .rf-item.highlight { opacity: 1; }
     }
+
+    /* ── Hover lift/glow on product-comparison cards ─────────────── */
+    /* Day 1 cards */
+    .day1-card { transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .day1-card.reforge:hover { transform: translateY(-4px); border-color: rgba(176, 38, 255, 0.35); box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 40px rgba(176, 38, 255, 0.18); }
+    .day1-card.clientpulse:hover { transform: translateY(-4px); border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 40px rgba(0, 229, 255, 0.18); }
+    /* Products section cards */
+    .product-card { transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 40px var(--card-accent, rgba(56,232,200,0.15)); }
+    /* Workflow translation cards */
+    .wf-translation-card { transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+    .wf-translation-card.rf:hover { transform: translateY(-4px); border-color: rgba(176, 38, 255, 0.4); box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 40px rgba(176, 38, 255, 0.18); }
+    .wf-translation-card.cp:hover { transform: translateY(-4px); border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 40px rgba(0, 229, 255, 0.18); }
   </style>
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
@@ -1570,6 +1581,11 @@
         stage.classList.add('play');
         lastPlay = Date.now();
       }
+      // Always play once on init so the line is drawn regardless of scroll position
+      requestAnimationFrame(function() {
+        stage.classList.add('is-visible');
+        play();
+      });
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function(entries) {
           entries.forEach(function(e) {
@@ -1585,7 +1601,7 @@
         }, { threshold: [0, 0.2, 0.4] });
         io.observe(stage);
       } else {
-        stage.classList.add('is-visible'); play(); inView = true;
+        inView = true;
       }
       setInterval(function() {
         if (inView && Date.now() - lastPlay >= REPLAY_MS - 200) play();
